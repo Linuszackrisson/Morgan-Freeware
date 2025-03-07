@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase, Software } from '@/utils/supabase';
+import SoftwareCard from '@/components/SoftwareCard';
 
 export default function Home() {
   const [software, setSoftware] = useState<Software[]>([]);
@@ -142,44 +143,7 @@ export default function Home() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {software.slice(0, 6).map((item) => (
-                <div key={item.id} className="bg-zinc-900 p-6">
-                  <div className="flex items-center mb-4">
-                    {item.icon_url && (
-                      <img
-                        src={item.icon_url}
-                        alt={`${item.title} icon`}
-                        className="w-12 h-12 mr-4"
-                      />
-                    )}
-                    <div>
-                      <h2 className="text-xl font-semibold">{item.title}</h2>
-                      <p className="text-zinc-400">{item.category}</p>
-                    </div>
-                  </div>
-                  <p className="text-zinc-300 mb-4">{item.description}</p>
-                  <div className="flex gap-4">
-                    {item.preview_url && (
-                      <a
-                        href={item.preview_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-emerald-500"
-                      >
-                        Preview
-                      </a>
-                    )}
-                    {item.website_url && (
-                      <a
-                        href={item.website_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-emerald-500"
-                      >
-                        Website
-                      </a>
-                    )}
-                  </div>
-                </div>
+                <SoftwareCard key={item.id} software={item} />
               ))}
             </div>
           )}
