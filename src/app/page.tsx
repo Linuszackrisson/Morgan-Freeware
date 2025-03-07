@@ -60,7 +60,15 @@ export default function Home() {
 
       {/* Categories Section */}
       <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8">Browse by Category</h2>
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold">Browse by Category</h2>
+          <Link 
+            href="/software" 
+            className="text-emerald-500 hover:text-emerald-400"
+          >
+            See all categories →
+          </Link>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {categories.map((category) => (
             <Link
@@ -79,7 +87,15 @@ export default function Home() {
 
       {/* Featured Software Section */}
       <div id="software-section" className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8">Featured Software</h2>
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold">Featured Software</h2>
+          <Link 
+            href="/software" 
+            className="text-emerald-500 hover:text-emerald-400"
+          >
+            View all software →
+          </Link>
+        </div>
         
         {loading ? (
           <div className="text-center py-12">
