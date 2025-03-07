@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { supabase, Software } from '@/utils/supabase';
+import { Software } from '@/utils/supabase';
 import SoftwareCard from '@/components/SoftwareCard';
-import Layout from '@/components/Layout';
+import { getAllSoftware, getUniqueCategories } from '@/lib/api';
 
 export default function Home() {
   const [software, setSoftware] = useState<Software[]>([]);
@@ -14,21 +14,9 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const { data, error } = await supabase
-          .from('software')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error) {
-          throw error;
-        }
-
-        if (data) {
-          setSoftware(data);
-          // Extract unique categories
-          const uniqueCategories = Array.from(new Set(data.map(item => item.category)));
-          setCategories(uniqueCategories);
-        }
+        const data = await getAllSoftware();
+        setSoftware(data);
+        setCategories(getUniqueCategories(data));
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

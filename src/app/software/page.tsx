@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { supabase, Software } from '@/utils/supabase';
+import { Software } from '@/utils/supabase';
 import SoftwareCard from '@/components/SoftwareCard';
+import { getAllSoftware, getUniqueCategories, filterSoftwareByCategory } from '@/lib/api';
 
 export default function SoftwarePage() {
   const [software, setSoftware] = useState<Software[]>([]);
@@ -22,21 +23,9 @@ export default function SoftwarePage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const { data, error } = await supabase
-          .from('software')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error) {
-          throw error;
-        }
-
-        if (data) {
-          setSoftware(data);
-          // Extract unique categories
-          const uniqueCategories = Array.from(new Set(data.map(item => item.category)));
-          setCategories(uniqueCategories);
-        }
+        const data = await getAllSoftware();
+        setSoftware(data);
+        setCategories(getUniqueCategories(data));
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -47,9 +36,7 @@ export default function SoftwarePage() {
     fetchData();
   }, []);
 
-  const filteredSoftware = selectedCategory === 'all'
-    ? software
-    : software.filter(item => item.category === selectedCategory);
+  const filteredSoftware = filterSoftwareByCategory(software, selectedCategory);
 
   return (
     <div className="container mx-auto px-4 py-16">

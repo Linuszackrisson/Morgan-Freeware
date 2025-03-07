@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { supabase, Software } from '@/utils/supabase';
+import { Software } from '@/utils/supabase';
+import { getSoftwareById } from '@/lib/api';
 
 export default function SoftwareDetail() {
   const { id } = useParams();
@@ -13,16 +14,7 @@ export default function SoftwareDetail() {
   useEffect(() => {
     async function fetchSoftware() {
       try {
-        const { data, error } = await supabase
-          .from('software')
-          .select('*')
-          .eq('id', id)
-          .single();
-
-        if (error) {
-          throw error;
-        }
-
+        const data = await getSoftwareById(id as string);
         setSoftware(data);
       } catch (error) {
         console.error('Error fetching software:', error);
