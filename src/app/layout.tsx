@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/Layout";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Raleway({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Freeware Portal",
-  description: "A curated collection of freeware software",
+  title: "Morgan Freeware",
+  description: "A list of free software alternatives",
 };
 
 export default function RootLayout({
