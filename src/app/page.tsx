@@ -37,23 +37,39 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-zinc-900">
+      <div className="bg-[#0B3B3B]">
         <div className="container mx-auto px-4 py-20">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold mb-6">
-              Why Pay When the Best is Free?
-            </h1>
-            <p className="text-xl mb-8 text-zinc-400">
-              Discover a world of powerful alternatives to expensive software. 
-              Save money without compromising on quality - our handpicked library 
-              of freeware delivers the same results as paid versions.
-            </p>
-            <button
-              onClick={scrollToSoftware}
-              className="bg-emerald-600 text-white px-8 py-4 text-lg font-semibold"
-            >
-              Browse Software
-            </button>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left side - Text content */}
+            <div className="max-w-3xl">
+              <h1 className="text-6xl font-bold mb-6">
+                No paywall <br></br>
+                No piracy
+                <br></br>
+                Just Pure Power
+              </h1>
+              
+              <p className="text-xl mb-8 text-white/80">
+                Why pay for overpriced licenses or risk shady downloads? We've handpicked the best alternatives that deliver the same results.  
+                Discover top-tier software, securely and for free, all in one place.
+              </p>
+
+              <button
+                onClick={scrollToSoftware}
+                className="border-white/80 border-2 text-white px-8 py-4 text-lg font-semibold"
+              >
+                Browse Software
+              </button>
+            </div>
+
+            {/* Right side - Wallet Image */}
+            <div className="hidden lg:flex justify-end">
+              <img 
+                src="/assets/wallet.svg" 
+                alt="Wallet illustration" 
+                className="w-96 h-96"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -7,11 +7,11 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-zinc-900 border-b border-zinc-800">
+    <header className="bg-[#0B3B3B]">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-emerald-500 font-bold text-xl">
-            Freeware Portal
+          <Link href="/" className="text-white font-bold text-xl">
+            Morgan Freeware
           </Link>
           
           {/* Mobile menu button */}
