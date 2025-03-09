@@ -22,87 +22,113 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <HeroSection />
-      {/* Skitjobbig sektion att göra, tog lång tid att få den korrekt. Designen är dessutom stulen från en annan sida! */}
-      <section className="w-full bg-white">
-        <div id="software-section" className="container py-16">
-          {loading ? (
-            <div className="text-center py-12">
-              <div className="w-12 h-12 border-2 border-[#4ECDC4] border-t-transparent mx-auto animate-spin"/>
-              <p className="mt-4 text-white/60">Loading software...</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-10 gap-6">
-              <div className="md:col-span-3">
-                {software[0] && <SoftwareCard software={software[0]} variant="large" />}
+    <main className="w-full min-h-screen relative bg-white">
+      
+      {/* Rutnär för att få till lite liv på sidan, jag är så trött på gradient bakgrunder. */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(42, 122, 68, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(42, 122, 68, 0.1) 1px, transparent 1px),
+            radial-gradient(circle at center, rgba(42, 122, 68, 0.05) 0, transparent 2px)
+          `,
+          backgroundSize: `
+            80px 80px,
+            80px 80px,
+            16px 16px
+          `,
+          backgroundPosition: `
+            -40px -40px,
+            -40px -40px,
+            -8px -8px
+          `,
+          zIndex: 0
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent" style={{ zIndex: 0 }} />
+      <div className="relative z-10">
+        <HeroSection />
+        {/* Skitjobbig sektion att göra, tog lång tid att få den korrekt. Designen är dessutom stulen från en annan sida! */}
+        <section className="w-full">
+          <div id="software-section" className="container py-16">
+            {loading ? (
+              <div className="text-center py-12">
+                <div className="w-12 h-12 border-2 border-[#4ECDC4] border-t-transparent mx-auto animate-spin"/>
+                <p className="mt-4 text-white/60">Loading software...</p>
               </div>
-              <div className="md:col-span-4">
-                <div className="grid gap-6">
-                  {software[1] && <SoftwareCard software={software[1]} variant="horizontal" />}
-                  {software[2] && <SoftwareCard software={software[2]} variant="horizontal" />}
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-10 gap-6">
+                <div className="md:col-span-3">
+                  {software[0] && <SoftwareCard software={software[17]} variant="large" />}
                 </div>
-              </div>
-              <div className="md:col-span-3">
-                {software[4] && <SoftwareCard software={software[4]} variant="large" />}
-              </div>
+                <div className="md:col-span-4">
+                  <div className="grid gap-6">
+                    {software[1] && <SoftwareCard software={software[1]} variant="horizontal" />}
+                    {software[2] && <SoftwareCard software={software[2]} variant="horizontal" />}
+                  </div>
+                </div>
+                <div className="md:col-span-3">
+                  {software[4] && <SoftwareCard software={software[16]} variant="large" />}
+                </div>
 
-              <div className="md:col-span-4">
-                <div className="grid gap-6">
-                  {software[5] && <SoftwareCard software={software[5]} variant="horizontal" />}
-                  {software[6] && <SoftwareCard software={software[6]} variant="horizontal" />}
+                <div className="md:col-span-4">
+                  <div className="grid gap-6">
+                    {software[5] && <SoftwareCard software={software[8]} variant="horizontal" />}
+                    {software[6] && <SoftwareCard software={software[6]} variant="horizontal" />}
+                  </div>
                 </div>
-              </div>
-              <div className="md:col-span-3">
-                {software[7] && <SoftwareCard software={software[7]} variant="large" />}
-              </div>
-              <div className="md:col-span-3">
-                <div className="bg-white rounded-2xl p-8 border border-gray-300 h-[400px]">
-                  <Link href="/software" className="block h-full">
-                    <div className="flex flex-col h-full items-center justify-center text-center">
-                      <div className="w-24 h-24 rounded-2xl bg-[#0B3B3B]/5 flex items-center justify-center">
-                        <Code className="w-12 h-12 text-black/90" />
+                <div className="md:col-span-3">
+                  {software[7] && <SoftwareCard software={software[7]} variant="large" />}
+                </div>
+                <div className="md:col-span-3 ">
+                  <div className="bg-white rounded-2xl p-8 border border-gray-300 h-[400px]">
+                    <Link href="/software" className="block h-full">
+                      <div className="flex flex-col h-full items-center justify-center text-center">
+                        <div className="w-24 h-24 rounded-2xl bg-[#0B3B3B]/5 flex items-center justify-center">
+                          <Code className="w-12 h-12 text-black/90" />
+                        </div>
+                        <div className="mt-6">
+                          <h2 className="text-black/90 text-2xl font-bold mb-3 ">
+                            View All Software
+                          </h2>
+                          <p className="text-black/50">
+                            Explore our complete collection of<br />free software alternatives
+                          </p>
+                        </div>
                       </div>
-                      <div className="mt-6">
-                        <h2 className="text-black/90 text-2xl font-bold mb-3">
-                          View All Software
-                        </h2>
-                        <p className="text-black/50">
-                          Explore our complete collection of<br />free software alternatives
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Browse by Category section - Tar bort den tillfälligt eftersom det inte är relevant för våra mål
-      <section className="w-full bg-white">
-        <div className="container py-24">
-          <h2 className="text-4xl font-bold mb-12">Browse by Category</h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map(category => (
-              <Link
-                key={category}
-                href={`/software?category=${encodeURIComponent(category)}`}
-              >
-                <div>
-                  <h3 className="text-xl">{category}</h3>
-                  <p className="text-sm text-gray-600">
-                    {software.filter(item => item.category === category).length} items
-                  </p>
-                </div>
-              </Link>
-            ))}
+            )}
           </div>
-        </div>
-      </section>
-      */}
-    </>
+        </section>
+
+        {/* Browse by Category section - Tar bort den tillfälligt eftersom det inte är relevant för våra mål
+        <section className="w-full bg-white">
+          <div className="container py-24">
+            <h2 className="text-4xl font-bold mb-12">Browse by Category</h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {categories.map(category => (
+                <Link
+                  key={category}
+                  href={`/software?category=${encodeURIComponent(category)}`}
+                >
+                  <div>
+                    <h3 className="text-xl">{category}</h3>
+                    <p className="text-sm text-gray-600">
+                      {software.filter(item => item.category === category).length} items
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+        */}
+      </div>
+    </main>
   );
 }

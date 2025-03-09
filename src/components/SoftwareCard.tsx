@@ -15,7 +15,7 @@ export default function SoftwareCard({ software, variant = 'large' }: SoftwareCa
         {variant === 'horizontal' ? (
           <div className="flex items-start gap-6 h-full">
             {software.icon_url && (
-              <div className="w-16 h-16 rounded-2xl bg-[#0B3B3B]/5 flex items-center justify-center p-3 shrink-0">
+              <div className="w-18 h-18 rounded-2xl  flex items-center justify-center p-1 shrink-0">
                 <img src={software.icon_url} alt={`${software.title} icon`} className="w-full h-full object-contain" />
               </div>
             )}
@@ -28,7 +28,7 @@ export default function SoftwareCard({ software, variant = 'large' }: SoftwareCa
         ) : (
           <div className="flex flex-col h-full">
             {software.icon_url && (
-              <div className="w-20 h-20 rounded-2xl bg-[#0B3B3B]/5 flex items-center justify-center p-4">
+              <div className="w-24 h-24 rounded-2xl  flex items-center justify-center p-1">
                 <img src={software.icon_url} alt={`${software.title} icon`} className="w-full h-full object-contain" />
               </div>
             )}
