@@ -9,7 +9,6 @@ import { getAllSoftware, getUniqueCategories, filterSoftwareByCategory } from '@
 export default function SoftwarePage() {
   const [software, setSoftware] = useState<Software[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const searchParams = useSearchParams();
 
@@ -28,8 +27,6 @@ export default function SoftwarePage() {
         setCategories(getUniqueCategories(data));
       } catch (error) {
         console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -72,18 +69,11 @@ export default function SoftwarePage() {
       </div>
 
       {/* Software Grid */}
-      {loading ? (
-        <div className="text-center py-12">
-          <div className="w-12 h-12 border-2 border-emerald-500 border-t-transparent mx-auto animate-spin"></div>
-          <p className="mt-4 text-zinc-400">Loading software...</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSoftware.map((item) => (
-            <SoftwareCard key={item.id} software={item} />
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredSoftware.map((item) => (
+          <SoftwareCard key={item.id} software={item} />
+        ))}
+      </div>
     </div>
   );
 } 

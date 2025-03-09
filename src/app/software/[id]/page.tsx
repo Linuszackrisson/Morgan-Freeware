@@ -9,7 +9,6 @@ import { getSoftwareById } from '@/lib/api';
 export default function SoftwareDetail() {
   const { id } = useParams();
   const [software, setSoftware] = useState<Software | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchSoftware() {
@@ -18,24 +17,11 @@ export default function SoftwareDetail() {
         setSoftware(data);
       } catch (error) {
         console.error('Error fetching software:', error);
-      } finally {
-        setLoading(false);
       }
     }
 
     fetchSoftware();
   }, [id]);
-
-  if (loading) {
-    return (
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center">
-          <div className="w-12 h-12 border-2 border-emerald-500 border-t-transparent mx-auto animate-spin"></div>
-          <p className="mt-4 text-zinc-400">Loading software details...</p>
-        </div>
-      </div>
-    );
-  }
 
   if (!software) {
     return (

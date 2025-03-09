@@ -4,10 +4,18 @@ export default function Hero() {
     <section className="w-full pt-24">
       <div className="container py-24 text-center">
         <div className="flex flex-col items-center max-w-3xl mx-auto">
+          {/* Dots */}
+          <div className="flex gap-2 mb-6">
+            <div className="w-4 h-4 rounded-full bg-[#4CAF50]"></div>
+            <div className="w-4 h-4 rounded-full bg-[#2196F3]"></div>
+            <div className="w-4 h-4 rounded-full bg-[#FFC107]"></div>
+            <div className="w-4 h-4 rounded-full bg-[#FF5722]"></div>
+          </div>
+
           {/* Heading */}
-          <h1 className="text-6xl font-bold text-[#2a7a44] mb-6">
+          <h1 className="text-6xl font-bold text-[#1a1a1a] mb-6">
             Make Your Wallet Happy <br></br>
-            <span className="text-[#2a7a44]">Discover Free Software</span>
+            <span className="text-[#6C5CE7]">Discover Free Software</span>
           </h1>
 
           {/* Description */}
@@ -16,7 +24,7 @@ export default function Hero() {
           </p>
 
           {/* CTA Button */}
-          <button className="bg-[#2a7a44] text-white px-8 py-4 rounded-full text-lg font-semibold">
+          <button className="bg-[#6C5CE7] text-white px-8 py-4 rounded-full text-lg font-semibold">
             Start Exploring
           </button>
         </div>
