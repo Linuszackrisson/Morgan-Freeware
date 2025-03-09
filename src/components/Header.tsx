@@ -7,7 +7,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-[#25ac5e]">
+    <header className="bg-[#2a7a44]">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-white font-bold text-xl">
@@ -25,7 +25,7 @@ export default function Header() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 font-semibold">
             <Link href="/" className="text-white">Home</Link>
             <Link href="/software" className="text-white">Software</Link>
             <Link href="/our-choice" className="text-white">Our Choice</Link>

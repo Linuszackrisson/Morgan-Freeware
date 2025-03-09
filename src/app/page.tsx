@@ -28,9 +28,9 @@ export default function Home() {
             
 
             {/* Heading */}
-            <h1 className="text-6xl font-bold text-[#25ac5e] mb-6">
+            <h1 className="text-6xl font-bold text-[#2a7a44] mb-6">
               Make Your Wallet Happy <br></br>
-              <span className="text-[#25ac5e]">Discover Free Software</span>
+              <span className="text-[#2a7a44]">Discover Free Software</span>
             </h1>
 
             {/* Description */}
@@ -40,7 +40,7 @@ export default function Home() {
             </p>
 
             {/* CTA Button */}
-            <button className="bg-[#25ac5e] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#0B3B3B]/90 transition-all duration-300">
+            <button className="bg-[#2a7a44] text-white px-8 py-4 rounded-full text-lg font-semibold">
               Get started for free
             </button>
           </div>
