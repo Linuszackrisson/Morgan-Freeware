@@ -3,7 +3,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/Layout";
 
-const inter = Raleway({ subsets: ["latin"] });
+const fontbajs = Raleway({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Morgan Freeware",
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
+      <body className={`${fontbajs.className}`}>
         <Layout>
           {children}
         </Layout>

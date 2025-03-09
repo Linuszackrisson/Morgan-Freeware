@@ -37,8 +37,8 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-[#0B3B3B]">
-        <div className="container mx-auto px-4 py-20">
+      <section className="w-full bg-[#0B3B3B]">
+        <div className="container py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left side - Text content */}
             <div className="max-w-3xl">
@@ -72,37 +72,39 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Categories Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">Browse by Category</h2>
-          <Link 
-            href="/software" 
-            className="text-emerald-500 hover:text-emerald-400"
-          >
-            See all categories →
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {categories.map((category) => (
-            <Link
-              key={category}
-              href={`/software?category=${encodeURIComponent(category)}`}
-              className="bg-zinc-900 p-6 border border-zinc-800"
+      <section className="w-full bg-[#0B3B3B]">
+        <div className="container py-16">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold">Browse by Category</h2>
+            <Link 
+              href="/software" 
+              className="text-emerald-500 hover:text-emerald-400"
             >
-              <h3 className="text-xl font-semibold mb-2">{category}</h3>
-              <p className="text-zinc-400">
-                {software.filter(item => item.category === category).length} items
-              </p>
+              See all categories →
             </Link>
-          ))}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {categories.map((category) => (
+              <Link
+                key={category}
+                href={`/software?category=${encodeURIComponent(category)}`}
+                className="bg-zinc-900 p-6 border border-zinc-800"
+              >
+                <h3 className="text-xl font-semibold mb-2">{category}</h3>
+                <p className="text-zinc-400">
+                  {software.filter(item => item.category === category).length} items
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-
+      </section>
+            <section className="w-full bg-[#0B3B3B]">
       {/* Featured Software Section */}
-      <div id="software-section" className="container mx-auto px-4 py-16">
+      <div id="software-section" className="container py-16 bg-[#0B3B3B]">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold">Featured Software</h2>
           <Link 
@@ -112,6 +114,7 @@ export default function Home() {
             View all software →
           </Link>
         </div>
+        
         
         {loading ? (
           <div className="text-center py-12">
@@ -126,6 +129,7 @@ export default function Home() {
           </div>
         )}
       </div>
+      </section>
     </>
   );
 }
