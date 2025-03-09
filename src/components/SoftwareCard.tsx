@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Software } from '@/utils/supabase';
+import { Software } from '@/types/software';
 
 interface SoftwareCardProps {
   software: Software;

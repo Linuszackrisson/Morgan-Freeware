@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Software } from '@/utils/supabase';
+import { Software } from '@/types/software';
 import SoftwareCard from '@/components/SoftwareCard';
 import { getAllSoftware, getUniqueCategories, filterSoftwareByCategory } from '@/lib/api';
 

@@ -1,5 +1,5 @@
-import { supabase, Software } from '@/utils/supabase';
-
+import { supabase } from '@/utils/supabase';
+import { Software } from '@/types/software';
 // Hämtar alla program från vår databas, vi typar interface för software i supabase.ts 
 // Sorterar även i fallande ordning, så senaste programmet visas först, det är viktigt för vi ska ha en "recently added" sektion senare.
 export async function getAllSoftware() {

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Software } from '@/utils/supabase';
+import { Software } from '@/types/software';
 import SoftwareCard from '@/components/SoftwareCard';
 import HeroSection from '@/components/Hero';
 import { getAllSoftware, getUniqueCategories } from '@/lib/api';
