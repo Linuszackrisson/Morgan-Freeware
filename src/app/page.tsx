@@ -22,31 +22,25 @@ export default function Home() {
 
   return (
     <>
-      <section className="w-full bg-white">
+      <section className="w-full bg-white pt-24">
         <div className="container py-24 text-center">
           <div className="flex flex-col items-center max-w-3xl mx-auto">
-            {/* Dots */}
-            <div className="flex gap-2 mb-8">
-              <div className="w-3 h-3 rounded-full bg-[#0B3B3B]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#0B3B3B]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#0B3B3B]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#0B3B3B]"></div>
-            </div>
+            
 
             {/* Heading */}
-            <h1 className="text-6xl font-bold text-black/90 mb-6">
-              Ditch the Cost
-              <br />
-              <span className="text-[#FF6500]">Discover Free Software Now</span>
+            <h1 className="text-6xl font-bold text-[#25ac5e] mb-6">
+              Make Your Wallet Happy <br></br>
+              <span className="text-[#25ac5e]">Discover Free Software</span>
             </h1>
 
             {/* Description */}
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl">
-              Stop overpaying for software and avoid risky downloads.
+            <p className="text-lg text-[#0B3B3B]/70 mb-8 max-w-2xl">
+              Ecommerce SaaS platforms typically provide a customizable online storefront or
+              website builder that allows businesses to create, manage online store
             </p>
 
             {/* CTA Button */}
-            <button className="bg-[#4F46E5] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#4338CA] transition-colors">
+            <button className="bg-[#25ac5e] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#0B3B3B]/90 transition-all duration-300">
               Get started for free
             </button>
           </div>
