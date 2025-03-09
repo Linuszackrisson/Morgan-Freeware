@@ -1,5 +1,4 @@
-import Link from 'next/link';
-
+'use client';
 export default function Hero() {
   return (
     <section className="w-full pt-24">
