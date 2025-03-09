@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Software } from '@/utils/supabase';
 import SoftwareCard from '@/components/SoftwareCard';
+import HeroSection from '@/components/Hero';
 import { getAllSoftware, getUniqueCategories } from '@/lib/api';
 import { Code } from 'lucide-react';
 
@@ -22,31 +23,8 @@ export default function Home() {
 
   return (
     <>
-      <section className="w-full bg-white pt-24">
-        <div className="container py-24 text-center">
-          <div className="flex flex-col items-center max-w-3xl mx-auto">
-            
-
-            {/* Heading */}
-            <h1 className="text-6xl font-bold text-[#2a7a44] mb-6">
-              Make Your Wallet Happy <br></br>
-              <span className="text-[#2a7a44]">Discover Free Software</span>
-            </h1>
-
-            {/* Description */}
-            <p className="text-lg text-[#0B3B3B]/70 mb-8 max-w-2xl">
-              Ecommerce SaaS platforms typically provide a customizable online storefront or
-              website builder that allows businesses to create, manage online store
-            </p>
-
-            {/* CTA Button */}
-            <button className="bg-[#2a7a44] text-white px-8 py-4 rounded-full text-lg font-semibold">
-              Get started for free
-            </button>
-          </div>
-        </div>
-      </section>
-
+      <HeroSection />
+      {/* Skitjobbig sektion att göra, tog lång tid att få den korrekt. Designen är dessutom stulen från en annan sida! */}
       <section className="w-full bg-white">
         <div id="software-section" className="container py-16">
           {loading ? (
