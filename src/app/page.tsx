@@ -1,5 +1,5 @@
 'use client';
-
+import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Software } from '@/types/software';
@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <main className="w-full min-h-screen relative bg-white">
-      {/* Rutnät för att få till lite liv på sidan */}
+      {/* Rutnät för att få till lite liv på sidan, såg livlöst ut innan*/}
       <div 
         className="absolute inset-0"
         style={{
@@ -51,6 +51,16 @@ export default function Home() {
         
         <section className="w-full">
           <div id="software-section" className="container py-16">
+          <div className="flex items-center justify-between mb-6">
+          <h2 className="text-4xl font-bold text-black/60">Software</h2>
+          <Link 
+            href="/software" 
+            className="group flex items-center gap-2 text-black/60 hover:text-black/80"
+          >
+            See all software
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
             <div className="grid grid-cols-1 md:grid-cols-10 gap-6">
               <div className="md:col-span-3">
                 {software[0] && <SoftwareCard software={software[17]} variant="large" />}
@@ -97,7 +107,7 @@ export default function Home() {
           </div>
         </section>
 
-        <CategoryGrid categories={categories} software={software} />
+        <CategoryGrid />
       </div>
     </main>
   );
