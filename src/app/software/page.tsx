@@ -111,7 +111,7 @@ export default function SoftwarePage() {
         </div>
 
         {/* Software Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {currentSoftware.map((item) => (
             <SoftwareCard key={item.id} software={item} variant="horizontal" />
           ))}
