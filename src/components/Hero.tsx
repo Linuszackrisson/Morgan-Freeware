@@ -1,4 +1,7 @@
 'use client';
+
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <section className="w-full pt-24">
@@ -24,9 +27,10 @@ export default function Hero() {
           </p>
 
           {/* CTA Button */}
-          <button className="bg-[#6C5CE7] text-white px-8 py-4 rounded-full text-lg font-semibold">
+          
+          <Link href="/software" className="bg-[#6C5CE7] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#6C5CE7]/90 transition-colors">
             Start Exploring
-          </button>
+          </Link>
         </div>
       </div>
     </section>
