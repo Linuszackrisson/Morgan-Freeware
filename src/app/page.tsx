@@ -85,7 +85,7 @@ export default function Home() {
                 {software[7] && <SoftwareCard software={software[7]} variant="large" />}
               </div>
               <div className="md:col-span-3 ">
-                <div className="bg-white rounded-2xl p-8 border border-gray-300 h-[400px]">
+                <div className="bg-white rounded-2xl p-8 border border-gray-300 h-[340px]">
                   <Link href="/software" className="block h-full">
                     <div className="flex flex-col h-full items-center justify-center text-center">
                       <div className="w-24 h-24 rounded-2xl bg-[#0B3B3B]/5 flex items-center justify-center">

@@ -9,7 +9,7 @@ interface SoftwareCardProps {
 export default function SoftwareCard({ software, variant = 'large' }: SoftwareCardProps) {
   return (
     <div className={`bg-white rounded-2xl p-8 border border-gray-300 ${
-      variant === 'large' ? 'h-[400px] flex flex-col' : 'h-[190px]'
+      variant === 'large' ? 'h-[340px] flex flex-col' : 'h-[160px]'
     }`}>
       <Link href={`/software/${software.id}`} className="block h-full">
         {variant === 'horizontal' ? (
