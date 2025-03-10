@@ -9,7 +9,4 @@ export interface Software {
   created_at: string;
 } 
 
-export interface CategoryGridProps {
-  categories: string[];
-  software: Software[];
-}
+
