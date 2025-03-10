@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
-import Layout from "@/components/Layout";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const fontbajs = Raleway({ subsets: ["latin"] });
 
@@ -18,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fontbajs.className}`}>
-        <Layout>
+        <Header />
           {children}
-        </Layout>
+        <Footer />  
       </body>
     </html>
   );
