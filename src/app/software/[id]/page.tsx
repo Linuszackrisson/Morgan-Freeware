@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Software } from '@/types/software';
-import { getSoftwareById } from '@/lib/api';
+import { getSoftwareById } from '@/app/api/software/route';
 
 export default function SoftwareDetail() {
   const { id } = useParams();

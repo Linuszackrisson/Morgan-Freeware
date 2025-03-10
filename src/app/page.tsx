@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import { Software } from '@/types/software';
 import HeroSection from '@/components/Hero';
 import CategoryGrid from '@/components/CategoryGrid';
-import { getAllSoftware, getUniqueCategories } from '@/lib/api';
+import { getAllSoftware, getUniqueCategories } from '@/app/api/software/route';
 import SoftwareGrid from '@/components/SoftwareGrid';
+import ContactForm from '@/components/ContactForm';
 
 export default function Home() {
   const [software, setSoftware] = useState<Software[]>([]);
@@ -49,6 +50,7 @@ export default function Home() {
         <SoftwareGrid software={software} />
 
         <CategoryGrid />
+        <ContactForm />
       </div>
     </main>
   );
