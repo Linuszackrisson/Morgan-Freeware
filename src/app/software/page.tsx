@@ -36,44 +36,53 @@ export default function SoftwarePage() {
   const filteredSoftware = filterSoftwareByCategory(software, selectedCategory);
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold mb-8">Software</h1>
+    <section className="w-full">
+      <div className="container py-16">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-black/60 mb-4">Software Collection</h1>
+          <p className="text-black/40 max-w-2xl mx-auto">
+            Discover our curated collection of free software alternatives. Find the perfect tools for your needs without breaking the bank.
+          </p>
+        </div>
 
-      {/* Category Filter */}
-      <div className="mb-8">
-        <div className="flex flex-wrap gap-4">
-          <button
-            onClick={() => setSelectedCategory('all')}
-            className={`px-4 py-2 ${
-              selectedCategory === 'all'
-                ? 'bg-emerald-600 text-white'
-                : 'bg-zinc-900 text-zinc-300'
-            }`}
-          >
-            All
-          </button>
-          {categories.map((category) => (
+        {/* Category Filter */}
+        <div className="mb-12">
+          <div className="flex flex-wrap justify-center gap-3">
             <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 ${
-                selectedCategory === category
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-zinc-900 text-zinc-300'
+              onClick={() => setSelectedCategory('all')}
+              className={`px-6 py-2.5 rounded-full transition-all duration-200 ${
+                selectedCategory === 'all'
+                  ? 'bg-[#6C5CE7] text-white shadow-lg'
+                  : 'bg-white text-black/60 hover:bg-black/5 border border-black/10'
               }`}
             >
-              {category}
+              All
             </button>
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-2.5 rounded-full transition-all duration-200 ${
+                  selectedCategory === category
+                    ? 'bg-[#6C5CE7] text-white shadow-lg'
+                    : 'bg-white text-black/60 hover:bg-black/5 border border-black/10'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Software Grid OBS VI KÖR SOM HORIZONTAL KORTEN HÄR*/}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
+          {filteredSoftware.map((item) => (
+            <SoftwareCard key={item.id} software={item} variant="horizontal" />
+
           ))}
         </div>
       </div>
-
-      {/* Software Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredSoftware.map((item) => (
-          <SoftwareCard key={item.id} software={item} />
-        ))}
-      </div>
-    </div>
+    </section>
   );
 } 

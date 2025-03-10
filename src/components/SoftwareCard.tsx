@@ -5,7 +5,7 @@ interface SoftwareCardProps {
   software: Software;
   variant?: 'large' | 'horizontal';
 }
-// OBS: Large är dom stora korten som vi även har i software page, horizontal är dom små korten som visas på startsidan.
+// OBS: Large är dom stora korten som vi även har i software page, horizontal är dom små korten som visas på startsidan OCH SOFTWARE PAGE
 export default function SoftwareCard({ software, variant = 'large' }: SoftwareCardProps) {
   return (
     <div className={`bg-white rounded-2xl p-8 border border-gray-300 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${
