@@ -8,7 +8,7 @@ interface SoftwareCardProps {
 // OBS: Large är dom stora korten som vi även har i software page, horizontal är dom små korten som visas på startsidan.
 export default function SoftwareCard({ software, variant = 'large' }: SoftwareCardProps) {
   return (
-    <div className={`bg-white rounded-2xl p-8 border border-gray-300 ${
+    <div className={`bg-white rounded-2xl p-8 border border-gray-300 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${
       variant === 'large' ? 'h-[340px] flex flex-col' : 'h-[160px]'
     }`}>
       <Link href={`/software/${software.id}`} className="block h-full">
