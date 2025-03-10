@@ -78,30 +78,14 @@ export default function Home() {
               <div className="md:col-span-4">
                 <div className="grid gap-6">
                   {software[5] && <SoftwareCard software={software[8]} variant="horizontal" />}
-                  {software[6] && <SoftwareCard software={software[6]} variant="horizontal" />}
+                  {software[6] && <SoftwareCard software={software[9]} variant="horizontal" />}
                 </div>
               </div>
               <div className="md:col-span-3">
                 {software[7] && <SoftwareCard software={software[7]} variant="large" />}
               </div>
               <div className="md:col-span-3 ">
-                <div className="bg-white rounded-2xl p-8 border border-gray-300 h-[340px]">
-                  <Link href="/software" className="block h-full">
-                    <div className="flex flex-col h-full items-center justify-center text-center">
-                      <div className="w-24 h-24 rounded-2xl bg-[#0B3B3B]/5 flex items-center justify-center">
-                        <Code className="w-12 h-12 text-black/90" />
-                      </div>
-                      <div className="mt-6">
-                        <h2 className="text-black/90 text-2xl font-bold mb-3 ">
-                          View All Software
-                        </h2>
-                        <p className="text-black/50">
-                          Explore our complete collection of<br />free software alternatives
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
+              {software[7] && <SoftwareCard software={software[11]} variant="large" />}
               </div>
             </div>
           </div>
