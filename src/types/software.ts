@@ -8,3 +8,8 @@ export interface Software {
   website_url: string;
   created_at: string;
 } 
+
+export interface CategoryGridProps {
+  categories: string[];
+  software: Software[];
+}
