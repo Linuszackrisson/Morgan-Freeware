@@ -9,12 +9,10 @@ import ContactForm from '@/components/ContactForm';
 
 export default function Home() {
   const [software, setSoftware] = useState<Software[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
     getAllSoftware().then(data => {
       setSoftware(data);
-      setCategories(getUniqueCategories(data));
     }).catch(console.error);
   }, []);
 

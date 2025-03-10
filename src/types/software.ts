@@ -9,4 +9,4 @@ export interface Software {
   created_at: string;
 } 
 
-
+// enda interfacet jag behöver hoppas jag på.. 
