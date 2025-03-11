@@ -5,22 +5,32 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Software } from '@/types/software';
 import { getSoftwareById } from '@/app/api/software/route';
+import SoftwareCard from '@/components/SoftwareCard';
+import { getAllSoftware } from '@/app/api/software/route';
 
 export default function SoftwareDetail() {
   const { id } = useParams();
   const [software, setSoftware] = useState<Software | null>(null);
+  const [relatedSoftware, setRelatedSoftware] = useState<Software[]>([]);
 
   useEffect(() => {
-    async function fetchSoftware() {
+    async function fetchData() {
       try {
         const data = await getSoftwareById(id as string);
         setSoftware(data);
+        
+        // Fetch all software and filter for same category
+        const allSoftware = await getAllSoftware();
+        const related = allSoftware
+          .filter(s => s.category === data.category && s.id !== data.id)
+          .slice(0, 4);
+        setRelatedSoftware(related);
       } catch (error) {
         console.error('Error fetching software:', error);
       }
     }
 
-    fetchSoftware();
+    fetchData();
   }, [id]);
 
   if (!software) return null;
@@ -30,7 +40,7 @@ export default function SoftwareDetail() {
       <div className="container py-24">
         
 
-        <div className="bg-white rounded-3xl p-12">
+        <div className="bg-white rounded-3xl p-12 ">
           <div className="flex items-start gap-12">
             {software?.icon_url && (
               <div className="w-40 h-40 rounded-2xl flex items-center justify-center p-2">
@@ -74,6 +84,17 @@ export default function SoftwareDetail() {
           </div>
         </div>
       </div>
+
+      {relatedSoftware.length > 0 && (
+        <div className="container py-16">
+          <h2 className="text-4xl font-bold text-black/60 mb-8">Related Software</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {relatedSoftware.map((item) => (
+              <SoftwareCard key={item.id} software={item} variant="horizontal" />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 } 
