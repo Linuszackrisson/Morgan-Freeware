@@ -23,74 +23,57 @@ export default function SoftwareDetail() {
     fetchSoftware();
   }, [id]);
 
-  if (!software) {
-    return (
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-8">Software Not Found</h1>
-        <Link href="/software" className="text-emerald-500">
-          ← Back to Software
-        </Link>
-      </div>
-    );
-  }
+  if (!software) return null;
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="mb-8">
-        <Link href="/software" className="text-emerald-500">
-          ← Back to Software
-        </Link>
-      </div>
+    <section className="w-full">
+      <div className="container py-24">
+        
 
-      <div className="bg-zinc-900 p-8">
-        <div className="flex items-start gap-8">
-          {software.icon_url && (
-            <img
-              src={software.icon_url}
-              alt={`${software.title} icon`}
-              className="w-24 h-24"
-            />
-          )}
-          <div>
-            <h1 className="text-4xl font-bold mb-2">{software.title}</h1>
-            <span className="inline-block bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-              {software.category}
-            </span>
+        <div className="bg-white rounded-3xl p-12">
+          <div className="flex items-start gap-12">
+            {software?.icon_url && (
+              <div className="w-40 h-40 rounded-2xl flex items-center justify-center p-2">
+                <img
+                  src={software.icon_url}
+                  alt={`${software.title} icon`}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            )}
+            <div className="flex-1">
+                <h1 className="text-6xl font-bold text-black/90 mb-4">{software.title}</h1>
+              <span className="inline-block border border-gray-300 text-black/60 px-6 py-2 text-base rounded-full font-medium">
+                {software.category}
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-12 max-w-4xl">
+            <h2 className="text-2xl font-semibold text-black/80 mb-6">Description</h2>
+            <p className="text-black/60 text-lg leading-relaxed">{software.description}</p>
+          </div>
+
+          <div className="mt-12 flex justify-between gap-6">
+            {software.website_url && (
+              <a
+                href={software.website_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#6C5CE7] text-white px-8 py-4 text-lg rounded-full hover:bg-[#6C5CE7]/90 transition-colors font-medium"
+              >
+                Visit Website
+              </a>
+            )}
+            <Link 
+              href="/software" 
+              className="inline-block bg-white text-black/80 px-8 py-4 text-lg rounded-full border border-gray-300 hover:bg-black/5 transition-colors font-medium"
+            >
+              Back to Software
+            </Link>
           </div>
         </div>
-
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Description</h2>
-          <p className="text-zinc-300">{software.description}</p>
-        </div>
-
-        <div className="mt-8 flex gap-4">
-          {software.preview_url && (
-            <a
-              href={software.preview_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-600 text-white px-6 py-3"
-            >
-              Preview Software
-            </a>
-          )}
-          {software.website_url && (
-            <a
-              href={software.website_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-zinc-800 text-white px-6 py-3"
-            >
-              Visit Website
-            </a>
-          )}
-        </div>
-
-        <div className="mt-8 text-sm text-zinc-500">
-          Added on {new Date(software.created_at).toLocaleDateString()}
-        </div>
       </div>
-    </div>
+    </section>
   );
 } 

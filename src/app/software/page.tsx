@@ -43,7 +43,6 @@ export default function SoftwarePage() {
 
   const filteredSoftware = filterSoftwareByCategory(software, selectedCategory);
   
-  // Calculate pagination
   const totalPages = Math.ceil(filteredSoftware.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;

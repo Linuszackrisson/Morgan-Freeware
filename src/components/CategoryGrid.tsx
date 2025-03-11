@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Code, Pencil, Camera, Music, ArrowRight } from 'lucide-react';
 
-// Konfigurera kategorier med ikoner och färger
+// vi kör med lite olika kategorier för att testa, vi kan senare lägga till fler kategorier
+// men tror vi bara kör fyra för att ge en bra uppfattning om vad vi har att erbjuda
 const FEATURED_CATEGORIES = [
   { 
     name: 'Development Tools', 
