@@ -19,26 +19,26 @@ export default function SoftwareGrid({ software }: { software: Software[] }) {
         </div>
             <div className="grid grid-cols-1 md:grid-cols-10 gap-6">
               <div className="md:col-span-3">
-                {software[0] && <SoftwareCard software={software[17]} variant="large" />}
+                {software[0] && <SoftwareCard software={software[7]} variant="large" />}
               </div>
               <div className="md:col-span-4">
                 <div className="grid gap-6">
-                  {software[1] && <SoftwareCard software={software[1]} variant="horizontal" />}
-                  {software[2] && <SoftwareCard software={software[2]} variant="horizontal" />}
+                  {software[1] && <SoftwareCard software={software[6]} variant="horizontal" />}
+                  {software[2] && <SoftwareCard software={software[10]} variant="horizontal" />}
                 </div>
               </div>
               <div className="md:col-span-3">
-                {software[4] && <SoftwareCard software={software[16]} variant="large" />}
+                {software[4] && <SoftwareCard software={software[18]} variant="large" />}
               </div>
 
               <div className="md:col-span-4">
                 <div className="grid gap-6">
-                  {software[5] && <SoftwareCard software={software[8]} variant="horizontal" />}
+                  {software[5] && <SoftwareCard software={software[2]} variant="horizontal" />}
                   {software[6] && <SoftwareCard software={software[9]} variant="horizontal" />}
                 </div>
               </div>
               <div className="md:col-span-3">
-                {software[7] && <SoftwareCard software={software[7]} variant="large" />}
+                {software[7] && <SoftwareCard software={software[23]} variant="large" />}
               </div>
               <div className="md:col-span-3 ">
               {software[7] && <SoftwareCard software={software[11]} variant="large" />}
