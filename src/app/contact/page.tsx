@@ -9,8 +9,7 @@ export default function Contact() {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h1 className="text-4xl font-bold text-black/60 mb-4">Get in Touch</h1>
           <p className="text-[#0B3B3B]/70">
-            Have questions or suggestions? We'd love to hear from you. Send us a message 
-            and we'll respond as soon as possible.
+            Have any questions or suggestions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </div>
         
