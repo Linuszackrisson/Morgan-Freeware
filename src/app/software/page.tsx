@@ -57,12 +57,13 @@ export default function SoftwarePage() {
   };
 
   return (
-    <section className="w-full">
+    <section className="w-full min-h-screen relative bg-white">
+
       <div className="container py-16">
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-black/60 mb-4">Software Collection</h1>
-          <p className="text-black/40 max-w-2xl mx-auto">
+          <p className="text-[#0B3B3B]/70 max-w-2xl mx-auto">
             Discover our curated collection of free software alternatives. Find the perfect tools for your needs without breaking the bank.
           </p>
         </div>
