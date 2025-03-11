@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Software } from '@/types/software';
 import SoftwareCard from '@/components/SoftwareCard';
-import { getAllSoftware, getUniqueCategories, filterSoftwareByCategory } from '@/app/api/software/route';
+import { getAllSoftware, getCategories } from '@/app/api/software/route';
 
 export default function SoftwarePage() {
   const [software, setSoftware] = useState<Software[]>([]);
@@ -30,23 +30,24 @@ export default function SoftwarePage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await getAllSoftware();
-        setSoftware(data);
-        setCategories(getUniqueCategories(data));
+        const [softwareData, categoriesData] = await Promise.all([
+          getAllSoftware(selectedCategory),
+          getCategories()
+        ]);
+        setSoftware(softwareData);
+        setCategories(categoriesData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
 
     fetchData();
-  }, []);
+  }, [selectedCategory]);
 
-  const filteredSoftware = filterSoftwareByCategory(software, selectedCategory);
-  
-  const totalPages = Math.ceil(filteredSoftware.length / itemsPerPage);
+  const totalPages = Math.ceil(software.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentSoftware = filteredSoftware.slice(startIndex, endIndex);
+  const currentSoftware = software.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

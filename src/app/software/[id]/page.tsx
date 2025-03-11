@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Software } from '@/types/software';
-import { getSoftwareById } from '@/app/api/software/route';
+import { getSoftwareById, getAllSoftware } from '@/app/api/software/route';
 import SoftwareCard from '@/components/SoftwareCard';
-import { getAllSoftware } from '@/app/api/software/route';
 
 export default function SoftwareDetail() {
   const { id } = useParams();
@@ -19,12 +18,9 @@ export default function SoftwareDetail() {
         const data = await getSoftwareById(id as string);
         setSoftware(data);
         
-        // Fetch all software and filter for same category
-        const allSoftware = await getAllSoftware();
-        const related = allSoftware
-          .filter(s => s.category === data.category && s.id !== data.id)
-          .slice(0, 4);
-        setRelatedSoftware(related);
+        // Fetch related software of same category
+        const related = await getAllSoftware(data.category);
+        setRelatedSoftware(related.filter(s => s.id !== data.id).slice(0, 4));
       } catch (error) {
         console.error('Error fetching software:', error);
       }
