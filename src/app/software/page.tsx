@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Software } from '@/types/software';
-import SoftwareCard from '@/components/SoftwareCard';
+import { SoftwareCard } from '@/components/SoftwareCard';
 import { getAllSoftware, getCategories } from '@/app/api/software/route';
 
 export default function SoftwarePage() {
@@ -60,7 +60,7 @@ export default function SoftwarePage() {
     <section className="w-full min-h-screen relative bg-white">
 
       <div className="container py-16">
-        {/* Header Section */}
+        
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-black/60 mb-4">Software Collection</h1>
           <p className="text-[#0B3B3B]/70 max-w-2xl mx-auto">
@@ -68,7 +68,7 @@ export default function SoftwarePage() {
           </p>
         </div>
 
-        {/* Category Filter */}
+        
         <div className="mb-12">
           <div className="flex flex-wrap justify-center gap-3">
             <button
@@ -114,7 +114,7 @@ export default function SoftwarePage() {
         {/* Software Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {currentSoftware.map((item) => (
-            <SoftwareCard key={item.id} software={item} variant="horizontal" />
+            <SoftwareCard key={item.id} software={item} />
           ))}
         </div>
 

@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import { Software } from '@/types/software';
 import { ArrowRight } from 'lucide-react';
-import SoftwareCard from '@/components/SoftwareCard';
+import { SoftwareCard } from '@/components/SoftwareCard';
+import { LargeSoftwareCard } from '@/components/LargeSoftwareCard';
 // Vi kan manuellt välja vilka vi vill visa på startsidan, jag valde dom jag tyckte hade snyggast icon och passade bäst :)
 export default function SoftwareGrid({ software }: { software: Software[] }) {
+  if (software.length < 24) return null; 
+
   return (
     <section className="w-full">
       <div id="software-section" className="container py-16">
@@ -19,29 +22,29 @@ export default function SoftwareGrid({ software }: { software: Software[] }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-10 gap-6">
           <div className="md:col-span-3">
-            <SoftwareCard software={software[7]} variant="large" />
+            <LargeSoftwareCard software={software[7]} />
           </div>
           <div className="md:col-span-4">
             <div className="grid gap-6">
-              <SoftwareCard software={software[6]} variant="horizontal" />
-              <SoftwareCard software={software[10]} variant="horizontal" />
+              <SoftwareCard software={software[6]} />
+              <SoftwareCard software={software[10]} />
             </div>
           </div>
           <div className="md:col-span-3">
-            <SoftwareCard software={software[18]} variant="large" />
+            <LargeSoftwareCard software={software[18]} />
           </div>
 
           <div className="md:col-span-4">
             <div className="grid gap-6">
-              <SoftwareCard software={software[2]} variant="horizontal" />
-              <SoftwareCard software={software[9]} variant="horizontal" />
+              <SoftwareCard software={software[2]} />
+              <SoftwareCard software={software[9]} />
             </div>
           </div>
           <div className="md:col-span-3">
-            <SoftwareCard software={software[23]} variant="large" />
+            <LargeSoftwareCard software={software[23]} />
           </div>
           <div className="md:col-span-3">
-            <SoftwareCard software={software[11]} variant="large" />
+            <LargeSoftwareCard software={software[11]} />
           </div>
         </div>
       </div>

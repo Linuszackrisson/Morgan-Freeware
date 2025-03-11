@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Software } from '@/types/software';
 import { getSoftwareById, getAllSoftware } from '@/app/api/software/route';
-import SoftwareCard from '@/components/SoftwareCard';
+import { SoftwareCard } from '@/components/SoftwareCard';
 
 export default function SoftwareDetail() {
   const { id } = useParams();
@@ -18,7 +18,7 @@ export default function SoftwareDetail() {
         const data = await getSoftwareById(id as string);
         setSoftware(data);
         
-        // Fetch related software of same category
+       
         const related = await getAllSoftware(data.category);
         setRelatedSoftware(related.filter(s => s.id !== data.id).slice(0, 4));
       } catch (error) {
@@ -86,7 +86,7 @@ export default function SoftwareDetail() {
           <h2 className="text-4xl font-bold text-black/60 mb-8">Related Software</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {relatedSoftware.map((item) => (
-              <SoftwareCard key={item.id} software={item} variant="horizontal" />
+              <SoftwareCard key={item.id} software={item}/>
             ))}
           </div>
         </div>
