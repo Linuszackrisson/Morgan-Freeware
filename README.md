@@ -22,12 +22,8 @@
 [Testa här](#)
 
 
-
-
-# 🌟 Morgan FreeWare – En samlingsplats för gratis programvara  
-
 ## 💡 Idé  
-Morgan FreeWare föddes ur en enkel tanke: **"Jag har inga pengar" Nej då, skämt o sido. Jag använder mycket olika programvaror och att dom är konstandsfria är bara ett stort plus.**  
+Morgan FreeWare föddes ur en enkel tanke: **"Jag har inga pengar"** Nej då, skämt o sido. Jag använder mycket olika programvaror och att dom är konstandsfria är bara ett stort plus.  
 
 När jag först började lära mig **HTML och CSS** fick jag idén att samla gratis programvara på ett och samma ställe. Problemet? Jag hade ingen koll på databaser.  
 
