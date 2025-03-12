@@ -36,4 +36,28 @@ export async function getCategories() {
 
   if (error) throw error;
   return [...new Set(data.map(item => item.category))];
+}
+
+// Uppdaterar rating för specifik software på vår detaljerade lista
+export async function updateSoftwareRating(id: string, newRating: number) {
+  // Hämta nuvarande ratings
+  const { data: software } = await supabase
+    .from('software')
+    .select('average_rating, total_ratings')
+    .eq('id', id)
+    .single();
+
+  // Beräknar värdet för det nya genomsnittet, skitcoolt
+  const total = (software?.total_ratings || 0) + 1;
+  const average = ((software?.average_rating || 0) * (total - 1) + newRating) / total;
+
+  // Uppdaterar slutligen vår databas med det nya värdet
+  // Tur internet finns, det fanns en massa olika sätt att göra detta, men jag tyckte detta var det enklaste
+  const { error } = await supabase
+    .from('software')
+    .update({ average_rating: average, total_ratings: total })
+    .eq('id', id);
+
+  if (error) throw error;
+  return { average_rating: average, total_ratings: total };
 } 
