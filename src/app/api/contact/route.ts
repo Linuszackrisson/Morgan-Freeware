@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     // simpel validering, vi håller det så tills vidare detta är inte prio
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: "Alla fält måste fyllas i" },
+        { error: "All fields are required" },
         { status: 400 }
       );
     }
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     );
   } catch (error) {
     return NextResponse.json(
-      { error: "Ett fel uppstod" },
+      { error: "Something went wrong" },
       { status: 500 }
     );
   }

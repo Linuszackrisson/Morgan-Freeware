@@ -5,7 +5,7 @@ import HeroSection from '@/components/Hero';
 import CategoryGrid from '@/components/CategoryGrid';
 import { getAllSoftware } from '@/app/api/software/route';
 import SoftwareGrid from '@/components/SoftwareGrid';
-
+import NewsletterForm from '@/components/Newsletter';
 export default function Home() {
   const [software, setSoftware] = useState<Software[]>([]);
 
@@ -47,6 +47,7 @@ export default function Home() {
         <SoftwareGrid software={software} />
 
         <CategoryGrid />
+        <NewsletterForm />
       </div>
     </main>
   );
