@@ -7,6 +7,8 @@ import { LargeSoftwareCard } from '@/components/LargeSoftwareCard';
 export default function SoftwareGrid({ software }: { software: Software[] }) {
   if (software.length < 24) return null; 
 
+ 
+
   return (
     <section className="w-full">
       <div id="software-section" className="container py-16">
@@ -22,7 +24,12 @@ export default function SoftwareGrid({ software }: { software: Software[] }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-10 gap-6">
           <div className="md:col-span-3">
-            <LargeSoftwareCard software={software[7]} />
+            <div className="block md:hidden">
+              <SoftwareCard software={software[7]} />
+            </div>
+            <div className="hidden md:block"> 
+              <LargeSoftwareCard software={software[7]} />
+            </div>
           </div>
           <div className="md:col-span-4">
             <div className="grid gap-6">
@@ -31,7 +38,12 @@ export default function SoftwareGrid({ software }: { software: Software[] }) {
             </div>
           </div>
           <div className="md:col-span-3">
-            <LargeSoftwareCard software={software[18]} />
+            <div className="block md:hidden">
+              <SoftwareCard software={software[18]} />
+            </div>
+            <div className="hidden md:block">
+              <LargeSoftwareCard software={software[18]} />
+            </div>
           </div>
 
           <div className="md:col-span-4">
@@ -41,10 +53,20 @@ export default function SoftwareGrid({ software }: { software: Software[] }) {
             </div>
           </div>
           <div className="md:col-span-3">
-            <LargeSoftwareCard software={software[23]} />
+            <div className="block md:hidden">
+              <SoftwareCard software={software[23]} />
+            </div>
+            <div className="hidden md:block">
+              <LargeSoftwareCard software={software[23]} />
+            </div>
           </div>
           <div className="md:col-span-3">
-            <LargeSoftwareCard software={software[11]} />
+            <div className="block md:hidden">
+              <SoftwareCard software={software[11]} />
+            </div>
+            <div className="hidden md:block">
+              <LargeSoftwareCard software={software[11]} />
+            </div>
           </div>
         </div>
       </div>
