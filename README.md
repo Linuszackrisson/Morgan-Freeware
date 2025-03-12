@@ -24,68 +24,95 @@
 
 
 
-## 📌 Idé  
-Jag fick idén till Morgan FreeWare när jag lärde mig HTML och CSS. Då kunde jag inte genomföra den eftersom jag inte förstod databaser. När jag nu fick chansen att bygga vad jag ville, visste jag direkt att det var detta jag skulle göra.  
+# 🌟 Morgan FreeWare – En samlingsplats för gratis programvara  
 
-## 🎯 Syfte  
-Morgan FreeWare handlar om att visa att vi kan uppnå samma resultat som betalda program – utan att behöva lägga hundratals kronor i månaden. Oavsett om du vill redigera film, musik eller bilder finns det gratis alternativ.  
+## 💡 Idé  
+Morgan FreeWare föddes ur en enkel tanke: **"Jag har inga pengar" Nej då, skämt o sido. Jag använder mycket olika programvaror och att dom är konstandsfria är bara ett stort plus.**  
 
-Många väljer att piratkopiera, men det innebär risker.  
+När jag först började lära mig **HTML och CSS** fick jag idén att samla gratis programvara på ett och samma ställe. Problemet? Jag hade ingen koll på databaser.  
 
-> **Kort sagt: Morgan FreeWare är en samlingsplats för gratis programvara.**  
+Men nu, med mer kött på benen och friheten att bygga vad jag ville, visste jag exakt vilket projekt jag skulle satsa på.  
 
 ---
 
-## 🚀 Förberedelse – Frontend  
-- Jag satte upp ett **Next.js-projekt** och hade redan flera prototyper klara, så jag visste hur jag ville att det skulle se ut.  
-- Jag skapade sidor, undersidor och enkla komponenter samt såg till att navigeringen fungerade.  
-- Next.js gjorde det enkelt att hålla en bra mappstruktur.  
+## 🎯 Syfte – Nå samma resultat, utan att tömma plånboken 
+Många tror att man måste betala dyra månadsavgifter för att kunna **redigera video, musik eller bilder**. Andra vänder sig till **piratkopiering**, men det medför risker.  
 
-## 🛠️ Förberedelse – Backend  
-- Jag använde **Supabase**, skapade en **.env-fil** med rätt nycklar och lade upp en enkel tabell med:  
-  - `namn`  
-  - `beskrivning`  
-  - `icon_url`  
-- Jag fyllde tabellen med testdata och gjorde mitt första GET-anrop.  
+---
 
-> **Supabase var smidigt att använda och hade många bra guider.**  
+## 🚀 Byggprocessen  
 
-- När jag försökte fylla databasen med AI-genererade programlistor märkte jag snabbt att det inte var så enkelt.  
-- Många ikon-länkar fungerade inte, så jag fick lägga in dem manuellt.  
-- När databasen var fylld kunde jag se hur korten visades på sidan.  
+### **📌 Förberedelse – Frontend**  
+Jag satte upp ett **Next.js-projekt** tidigt, och eftersom jag redan hade testat flera prototyper, jag visste typ hur jag ville att det skulle se ut.  
+
+🔹 Jag skapade sidor, undersidor och enkla komponenter  
+🔹 Säkerställde att navigeringen fungerade smidigt (Tack Next.js för att du gjorde det enkelt) 
+🔹 Försökte för en gångs skull vara noga med mappstruktur
+🔹 Även fördelningar av komponenter, så jag kunde återanvända så mycket som möjligt. 
+
+---
+
+### **🛠️ Förberedelse – Backend**  
+För att hantera data använde jag **Supabase** – ett enkelt och kraftfullt verktyg som gjorde det lätt att bygga backend.  
+
+1️⃣ Jag satte upp en **.env-fil** med korrekta API-nycklar  
+2️⃣ Skapade en tabell med tre kolumner:  
+   - `namn`  
+   - `beskrivning`  
+   - `icon_url`  
+3️⃣ Fyllde tabellen med testdata och gjorde mitt första **GET-anrop** efter att ha följt deras dokumentation.  
+
+> Supabase gjorde processen smidig, men jag stötte ändå på problem...  
+
+När jag försökte fylla databasen med **AI-genererade listor** av programvara upptäckte jag snabbt att många **ikon-länkar var döda**. Jag insåg att jag behövde välja ikoner **manuellt** – något jag först såg som en nackdel, men som gjorde sidan mycket snyggare i slutändan.  
+
+När databasen väl var klar och fungerade kunde jag se hur korten **mappades ut och visades** på sidan.  
 
 ---
 
 ## 🎨 Design och planering  
-- Jag gillar design men använder inte **Figma**, eftersom jag tycker det tar för mycket tid.  
-- Istället hämtade jag inspiration från **Pinterest**, där jag kollade på hero-sektioner och grid-layouter.  
-- Jag föreställde mig designen i huvudet samtidigt som jag hade Pinterest på andra skärmen.  
-- Sedan började jag koda en komponent eller sida i taget:  
-  1. **Hero-sektionen**  
-  2. **Softwarecards**  
-  3. **Softwaregrid**  
-  4. **Kategorisidan**  
-  5. **Software-sidan** där användare kan bläddra själva.  
 
-- När jag väl hade en grundstil använde jag samma **avstånd, textstorlek och färger** på hela sidan för en enhetlig look.  
+### **🖌️ Inspiration och tankesätt**  
+Jag älskar att göra saker snygga, men jag är **inte** den som sitter i **Figma** och skissar i timmar – för mig är det slöseri med tid, för jag är ingen designer.  
 
-## 🎨 Färgschema  
-Jag ville att sidan skulle kännas **”techig”**.  
-- Först funderade jag på **dark mode**, men det kändes inte rätt eftersom plattformen ska vara för alla.  
-- Jag valde istället:  
-  - **Vitt, grått och svart** som bas  
-  - **Små inslag av rött, blått, gult och grönt** på vissa detaljer  
+Istället vände jag mig till **Pinterest** och liknande sidor. Där bläddrade jag igenom **hero-sektioner, gridlayouter och UI-komponenter** för att hitta inspiration.  
 
----
+📌 **Min process var enkel:**  
+1. Jag visualiserade designen i huvudet  
+2. Jag hade Pinterest på ena skärmen och koden på den andra  
+3. Jag kodade en komponent i taget:  
+   - **HeroSection**  
+   - **SoftwareCards**  
+   - **SoftwareGrid**  
+   - **CategoryCard**  
+   - **Software-sidan**
+   - **Osv**
 
-## ✅ Slutfix och detaljer  
-När allt såg bra ut och fungerade lade jag till fler funktioner, som:  
-- 📨 Ett **kontaktformulär** kopplat till Supabase  
-- ℹ️ En **om oss-sida** (liknande denna text)  
-- ⭐ Nya fält i databasen för **rating, genomsnittligt betyg och totalbetyg**  
-- 🔧 Små förbättringar och justeringar  
+För att skapa en enhetlig look försökte jag **återanvände jag samma avstånd, textstorlek och färger** över hela sidan. 
 
 ---
 
-## 📢 Sammanfattning  
-Morgan FreeWare är en **plattform för gratis programvara** där du kan hitta verktyg för att redigera film, musik, bilder och mer – helt utan kostnad! 🚀  
+### **🎨 Färgschema – Ljusare, modernare och öppnare**  
+Jag ville att Morgan FreeWare skulle kännas **”techig”**, men samtidigt **välkomnande**.  
+
+🌙 **Dark mode?** Nej, det kändes inte rätt.  
+💡 Jag ville istället ha en **ljus och modern look**, så jag valde:  
+- **Vitt, grått och svart** som basfärger  
+- **Rött, blått, gult och grönt** som accentfärger på små detaljer  
+
+Plot twist **Jag stal färgerna från en redan existerande sida.**  
+
+---
+
+## 🎯 Slutfix och detaljer  
+När allt började falla på plats var det dags att lägga till **de sista detaljerna** som gjorde sidan komplett.  
+
+✅ Ett **kontaktformulär** kopplat till Supabase  
+✅ En **Om oss-sida** där jag berättar om projektet  
+✅ Nya databaskolumner för **rating, genomsnittligt betyg och totalbetyg**  
+✅ Massor av små förbättringar och finjusteringar  
+
+---
+
+
+
