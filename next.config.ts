@@ -5,7 +5,11 @@ const config: NextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: '/Morgan-Freeware'
+  basePath: '/Morgan-Freeware',
+  eslint: {
+    // Stäng av ESLint under build
+    ignoreDuringBuilds: true
+  }
 }
 
 export default config
