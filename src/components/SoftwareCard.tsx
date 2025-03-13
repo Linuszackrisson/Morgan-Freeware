@@ -4,19 +4,19 @@ import { Software } from '@/types/software';
 // Orignal kortet som används på startsidan och i övriga delar. VI UTGÅR FRÅN DENNA!!!!!!
 export function SoftwareCard({ software }: { software: Software }) {
   return (
-    <div className="bg-white rounded-2xl p-8 border border-gray-300 h-[160px] transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+    <div className="bg-[var(--color-background)] rounded-lg p-6 border border-[var(--color-border)] h-[160px] transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 group">
       <Link href={`/software/${software.id}`} className="block h-full">
         <div className="flex items-center gap-6 h-full">
           {software.icon_url && (
             <img 
               src={software.icon_url} 
               alt={`${software.title} icon`} 
-              className="w-18 h-18 object-contain shrink-0" 
+              className="w-16 h-16 object-contain shrink-0" 
             />
           )}
           <div className="min-w-0">
-            <h2 className="text-2xl font-bold mb-2 truncate">{software.title}</h2>
-            <p className="text-[#0B3B3B]/80 line-clamp-2 text-sm">{software.description}</p>
+            <h2 className="text-xl font-semibold text-[var(--color-text-primary)] mb-2 truncate group-hover:text-[var(--color-primary)] transition-colors">{software.title}</h2>
+            <p className="text-[var(--color-text-secondary)] line-clamp-2 text-sm leading-relaxed">{software.description}</p>
           </div>
         </div>
       </Link>

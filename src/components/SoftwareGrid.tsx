@@ -5,18 +5,16 @@ import { SoftwareCard } from '@/components/SoftwareCard';
 import { LargeSoftwareCard } from '@/components/LargeSoftwareCard';
 // Vi kan manuellt välja vilka vi vill visa på startsidan, jag valde dom jag tyckte hade snyggast icon och passade bäst :)
 export default function SoftwareGrid({ software }: { software: Software[] }) {
-  if (software.length < 24) return null; 
-
- 
+  if (software.length < 24) return null; // Vi behövde tydligen en säkerhetskontroll efterom vi vill specifikt visa dessa utvalda kort.
 
   return (
     <section className="w-full">
-      <div id="software-section" className="container py-16">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-4xl font-bold text-black/60">Software</h2>
+      <div id="software-section" className="container py-20">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)]">Software</h2>
           <Link 
             href="/software" 
-            className="group flex items-center gap-2 text-black/60 hover:text-black/80"
+            className="group flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
           >
             See all software
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

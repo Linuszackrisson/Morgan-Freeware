@@ -7,52 +7,46 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white">
+    <header className="bg-[var(--color-background)] shadow-sm sticky top-0 z-50 border-b border-[var(--color-border)]">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo with new color */}
-          <Link href="/" className="text-[#1a1a1a] font-bold text-xl">
+          <Link href="/" className="text-[var(--color-text-primary)] font-bold text-xl">
             Morgan FreeWare
           </Link>
           
-          {/* Mobile menu button */}
           <button 
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-[var(--color-text-primary)]"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <svg className="w-8 h-8" fill="none" stroke="#6C5CE7" viewBox="0 0 24 24">
-              <path strokeLinecap="butt" strokeLinejoin="miter" strokeWidth={2} d="M4 6h16M4 12h16m-16 6h16"/>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-16 6h16"/>
             </svg>
           </button>
 
-          {/* Centered Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 font-semibold absolute left-1/2 transform -translate-x-1/2">
-            <Link href="/" className="text-[#1a1a1a]/70 hover:text-[#1a1a1a]">Home</Link>
-            <Link href="/software" className="text-[#1a1a1a]/70 hover:text-[#1a1a1a]">Software</Link>
-            <Link href="/about" className="text-[#1a1a1a]/70 hover:text-[#1a1a1a]">About</Link>
-            <Link href="/contact" className="text-[#1a1a1a]/70 hover:text-[#1a1a1a]">Contact</Link>
-            
+          <nav className="hidden md:flex items-center space-x-8 font-medium absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Home</Link>
+            <Link href="/software" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Software</Link>
+            <Link href="/about" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">About</Link>
+            <Link href="/contact" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Contact</Link>
           </nav>
 
-          {/* Request Button */}
           <Link 
-            href="/" 
-            className="hidden md:block bg-[#6C5CE7] text-white px-4 py-2 rounded-full hover:bg-[#6C5CE7]/90 transition-colors"
+            href="/request" 
+            className="hidden md:block bg-[var(--color-primary)] text-[var(--color-background)] px-6 py-2 rounded-sm font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             Request Software
           </Link>
         </div>
 
-        {/* Mobile Navigation */}
         {menuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200">
-            <Link href="/" className="block py-2 text-[#1a1a1a]/70 hover:text-[#1a1a1a]">Home</Link>
-            <Link href="/software" className="block py-2 text-[#1a1a1a]/70 hover:text-[#1a1a1a]">Software</Link>
-            <Link href="/about" className="block py-2 text-[#1a1a1a]/70 hover:text-[#1a1a1a]">About</Link>
-            <Link href="/contact" className="block py-2 text-[#1a1a1a]/70 hover:text-[#1a1a1a]">Contact</Link>
+          <nav className="md:hidden py-4 border-t border-[var(--color-border)]">
+            <Link href="/" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Home</Link>
+            <Link href="/software" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Software</Link>
+            <Link href="/about" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">About</Link>
+            <Link href="/contact" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Contact</Link>
             <Link 
-              href="/" 
-              className="inline-block py-2 text-white mt-4 bg-[#6C5CE7] px-6 rounded-full hover:bg-[#6C5CE7]/90 transition-colors mx-auto"
+              href="/request" 
+              className="inline-block mt-4 bg-[var(--color-primary)] text-[var(--color-background)] px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               Request Software
             </Link>

@@ -17,38 +17,12 @@ export default function Home() {
 
   return (
     <main className="w-full min-h-screen relative bg-white">
-      {/* Rutnät för att få till lite liv på sidan, såg livlöst ut innan*/}
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-            radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 0, transparent 2px)
-          `,
-          backgroundSize: `
-            80px 80px,
-            80px 80px,
-            16px 16px
-          `,
-          backgroundPosition: `
-            -40px -40px,
-            -40px -0px,
-            -8px -8px
-          `,
-          zIndex: 0
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" style={{ zIndex: 0 }} />
-      
-      <div className="relative z-1">
+        <div className="bakgrund bg-gradient-to-b from-[var(--color-background)] to-[var(--color-background-secondary)]">
         <HeroSection />
-        
         <SoftwareGrid software={software} />
-
         <CategoryGrid />
         <NewsletterForm />
-      </div>
-    </main>
+        </div>
+      </main>
   );
 }

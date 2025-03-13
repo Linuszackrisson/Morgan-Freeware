@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
-:root {
-  
+/* Färgschema för hela sidan, nu kan vi "styla" hela sidan på några få rader, önskade jag gjorde detta från början.. */
+
+@layer base {
+  :root {
+    --color-primary: theme('colors.green.700'); /* Huvudfärgen för knappar, texter och ikoner */
+    --color-primary-light: theme('colors.green.50'); /* Lättare nyans av huvudfärgen för typ hover-effekter och bakgrund på ikoner */
+    --color-text-primary: theme('colors.gray.900'); /* Text för h1or och h2or */
+    --color-text-secondary: theme('colors.gray.500'); /* Text för p-taggar och andra texter */
+    --color-border: theme('colors.gray.100'); /* Våran border-colour */
+    --color-background: theme('colors.white'); /* Primära bakgrundsfärgen */
+    --color-background-secondary: theme('colors.gray.50'); /* Sekundära bakgrundsfärgen om vi vill ha gradient osv */
+    --border-radius: theme('borderRadius.lg'); /* Våran border-radius för skarpa kort, kanske ändras senare */
+  }
 }
 
 .container {

@@ -7,54 +7,52 @@ const FEATURED_CATEGORIES = [
   { 
     name: 'Development Tools', 
     icon: Code, 
-    iconColor: 'text-[#2196F3]',
-    borderColor: 'border-[#2196F3]'
+    iconColor: 'text-[var(--color-primary)]',
   },
   { 
     name: 'Graphics & Design', 
     icon: Pencil, 
-    iconColor: 'text-[#4CAF50]',
-    borderColor: 'border-[#4CAF50]'
+    iconColor: 'text-[var(--color-primary)]',
   },
   { 
     name: 'Video Editing', 
     icon: Camera, 
-    iconColor: 'text-[#FFC107]',
-    borderColor: 'border-[#FFC107]'
+    iconColor: 'text-[var(--color-primary)]',
   },
   { 
     name: 'Music Production', 
     icon: Music, 
-    iconColor: 'text-[#FF5722]',
-    borderColor: 'border-[#FF5722]'
+    iconColor: 'text-[var(--color-primary)]',
   }
 ];
 
 export default function CategoryGrid() {
   return (
     <section className="w-full">
-      <div className="container py-24">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-4xl font-bold text-black/60">Categories</h2>
+      <div className="container py-20">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)]">Categories</h2>
           <Link 
             href="/software" 
-            className="group flex items-center gap-2 text-black/60 hover:text-black/80"
+            className="group flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
           >
             See all categories
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {FEATURED_CATEGORIES.map(({ name, icon: Icon, iconColor, borderColor }) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {FEATURED_CATEGORIES.map(({ name, icon: Icon, iconColor}) => (
             <Link
               key={name}
               href={`/software?category=${encodeURIComponent(name)}`}
               className="group"
             >
-              <div className={`p-6 bg-white border-2 ${borderColor} rounded-xl transition-all duration-200 hover:shadow-lg hover:-translate-y-1`}>
-                <Icon className={`w-12 h-12 mb-4 ${iconColor}`} />
-                <h3 className="text-xl font-semibold text-black/80">{name}</h3>
+              <div className="p-6 bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                <div className={`w-12 h-12 ${iconColor} rounded-lg flex items-center justify-center mb-4 bg-[var(--color-primary-light)] border border-[var(--color-border)]`}>
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">{name}</h3>
               </div>
             </Link>
           ))}

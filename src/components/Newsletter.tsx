@@ -32,36 +32,36 @@ export default function NewsletterForm() {
   };
 
   return (
-    <section className="w-full py-16 md:py-">
+    <section className="w-full py-20 bg-white">
       <div className="container max-w-6xl mx-auto px-4">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <div className="flex flex-col items-center gap-4 mb-8">
-            <div className="w-14 h-14 rounded-full bg-[#6C5CE7]/10 flex items-center justify-center">
-              <Mail className="w-7 h-7 text-[#6C5CE7]" />
+            <div className="w-14 h-14 rounded-lg bg-[var(--color-primary-light)] flex items-center justify-center border border-[var(--color-border)]">
+              <Mail className="w-7 h-7 text-[var(--color-primary)]" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-[#1a1a1a] mb-2">Don't miss out on the latest updates</h2>
-              <p className="text-lg text-gray-600 max-w-xl">
+              <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-4">Don't miss out on the latest updates</h2>
+              <p className="text-lg text-[var(--color-text-secondary)] max-w-xl leading-relaxed">
                 We are adding new software every week, so you don't want to miss out on the latest updates.
               </p>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="w-full max-w-2xl">
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-4">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
                 required
-                className="flex-1 px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#6C5CE7] outline-none text-gray-600 text-lg placeholder:text-gray-400"
+                className="flex-1 px-6 py-4 rounded-lg border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-light)] outline-none text-[var(--color-text-primary)] text-lg placeholder:text-[var(--color-text-secondary)] transition-all"
                 disabled={isSubmitting}
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-[#6C5CE7] text-white px-8 py-4 rounded-xl hover:bg-[#6C5CE7]/90 transition-all disabled:opacity-50 whitespace-nowrap text-lg font-semibold shadow-lg shadow-[#6C5CE7]/20 hover:shadow-xl hover:shadow-[#6C5CE7]/30"
+                className="bg-[var(--color-primary)] text-[var(--color-background)] px-8 py-4 rounded-lg hover:opacity-90 transition-all duration-300 disabled:opacity-50 whitespace-nowrap text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
               </button>
@@ -72,7 +72,6 @@ export default function NewsletterForm() {
               </p>
             )}
           </form>
-
         </div>
       </div>
     </section>
