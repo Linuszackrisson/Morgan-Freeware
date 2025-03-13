@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next'
+
+const config: NextConfig = {
   output: 'export',
   images: {
     unoptimized: true
@@ -7,4 +8,4 @@ const nextConfig = {
   basePath: '/Morgan-Freeware'
 }
 
-module.exports = nextConfig
+export default config
