@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Mail } from 'lucide-react';
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState('');
@@ -31,38 +32,46 @@ export default function NewsletterForm() {
   };
 
   return (
-    <section className="w-full bg-[#6C5CE7]/5 py-24">
-      <div className="container">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-black/80 mb-4">Stay Updated</h2>
-          <p className="text-black/60 mb-8">
-            Subscribe to our newsletter to get updates about new free software alternatives.
-          </p>
-          <div className="bg-white rounded-2xl p-8 shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-4">
+    <section className="w-full py-16 md:py-">
+      <div className="container max-w-6xl mx-auto px-4">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+          <div className="flex flex-col items-center gap-4 mb-8">
+            <div className="w-14 h-14 rounded-full bg-[#6C5CE7]/10 flex items-center justify-center">
+              <Mail className="w-7 h-7 text-[#6C5CE7]" />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Don't miss out on the latest updates</h2>
+              <p className="text-lg text-gray-600 max-w-xl">
+                We are adding new software every week, so you don't want to miss out on the latest updates.
+              </p>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="w-full max-w-2xl">
+            <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder="Enter your email address"
                 required
-                className="w-full px-6 py-4 rounded-xl border border-gray-200 focus:border-[#6C5CE7] outline-none"
+                className="flex-1 px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#6C5CE7] outline-none text-gray-600 text-lg placeholder:text-gray-400"
                 disabled={isSubmitting}
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#6C5CE7] text-white px-8 py-4 rounded-xl hover:bg-[#6C5CE7]/90 transition-colors disabled:opacity-50"
+                className="bg-[#6C5CE7] text-white px-8 py-4 rounded-xl hover:bg-[#6C5CE7]/90 transition-all disabled:opacity-50 whitespace-nowrap text-lg font-semibold shadow-lg shadow-[#6C5CE7]/20 hover:shadow-xl hover:shadow-[#6C5CE7]/30"
               >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
               </button>
-            </form>
+            </div>
             {message && (
-              <p className={`mt-4 text-sm ${message.includes('error') ? 'text-red-500' : 'text-green-500'}`}>
+              <p className={`mt-4 text-base ${message.includes('error') ? 'text-red-500' : 'text-green-500'}`}>
                 {message}
               </p>
             )}
-          </div>
+          </form>
         </div>
       </div>
     </section>

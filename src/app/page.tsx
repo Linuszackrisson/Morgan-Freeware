@@ -39,7 +39,7 @@ export default function Home() {
           zIndex: 0
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent" style={{ zIndex: 0 }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" style={{ zIndex: 0 }} />
       
       <div className="relative z-1">
         <HeroSection />
