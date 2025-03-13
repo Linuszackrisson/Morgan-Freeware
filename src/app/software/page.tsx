@@ -62,8 +62,8 @@ export default function SoftwarePage() {
       <div className="container py-16">
         
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-black/60 mb-4">Software Collection</h1>
-          <p className="text-[#0B3B3B]/70 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-4">Software Collection</h1>
+          <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
             Discover our curated collection of free software alternatives. Find the perfect tools for your needs without breaking the bank.
           </p>
         </div>
@@ -80,10 +80,10 @@ export default function SoftwarePage() {
                 params.set('page', '1');
                 router.push(`?${params.toString()}`);
               }}
-              className={`px-6 py-2.5 rounded-full transition-all duration-200 cursor-pointer ${
+              className={`px-6 py-2.5 rounded-[var(--border-radius)] transition-all duration-200 cursor-pointer ${
                 selectedCategory === 'all'
-                  ? 'bg-[#6C5CE7] text-white shadow-lg'
-                  : 'bg-white text-black/60 hover:bg-black/5 border border-black/10'
+                  ? 'bg-[var(--color-primary)] text-[var(--color-background)] shadow-lg'
+                  : 'bg-white text-[var(--color-text-secondary)] hover:bg-black/5 border border-[var(--color-border)]'
               }`}
             >
               All
@@ -99,10 +99,10 @@ export default function SoftwarePage() {
                   params.set('page', '1');
                   router.push(`?${params.toString()}`);
                 }}
-                className={`px-6 py-2.5 rounded-full transition-all duration-200 cursor-pointer ${
+                className={`px-6 py-2.5 rounded-[var(--border-radius)] transition-all duration-200 cursor-pointer ${
                   selectedCategory === category
-                    ? 'bg-[#6C5CE7] text-white shadow-lg'
-                    : 'bg-white text-black/60 hover:bg-black/5 border border-black/10'
+                    ? 'bg-[var(--color-primary)] text-[var(--color-background)] shadow-lg'
+                    : 'bg-white text-[var(--color-text-secondary)] hover:bg-black/5 border border-[var(--color-border)]'
                 }`}
               >
                 {category}
@@ -124,10 +124,10 @@ export default function SoftwarePage() {
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-2 rounded-[var(--border-radius)] transition-all duration-200 cursor-pointer ${
                 currentPage === 1
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-white text-black/60 hover:bg-black/5 border border-black/10'
+                  : 'bg-white text-[var(--color-text-secondary)] hover:bg-black/5 border border-[var(--color-border)]'
               }`}
             >
               Previous
@@ -137,10 +137,10 @@ export default function SoftwarePage() {
               <button
                 key={page}
                 onClick={() => handlePageChange(page)}
-                className={`px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 rounded-[var(--border-radius)] transition-all duration-200 cursor-pointer ${
                   currentPage === page
-                    ? 'bg-[#6C5CE7] text-white shadow-lg'
-                    : 'bg-white text-black/60 hover:bg-black/5 border border-black/10'
+                    ? 'bg-[var(--color-primary)] text-[var(--color-background)] shadow-lg'
+                    : 'bg-white text-[var(--color-text-secondary)] hover:bg-black/5 border border-[var(--color-border)]'
                 }`}
               >
                 {page}
@@ -150,10 +150,10 @@ export default function SoftwarePage() {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-2 rounded-[var(--border-radius)] transition-all duration-200 cursor-pointer ${
                 currentPage === totalPages
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-white text-black/60 hover:bg-black/5 border border-black/10'
+                  : 'bg-white text-[var(--color-text-secondary)] hover:bg-black/5 border border-[var(--color-border)]'
               }`}
             >
               Next
