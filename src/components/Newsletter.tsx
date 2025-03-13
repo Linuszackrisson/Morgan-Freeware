@@ -40,7 +40,7 @@ export default function NewsletterForm() {
               <Mail className="w-7 h-7 text-[#6C5CE7]" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Don't miss out on the latest updates</h2>
+              <h2 className="text-3xl font-bold text-[#1a1a1a] mb-2">Don't miss out on the latest updates</h2>
               <p className="text-lg text-gray-600 max-w-xl">
                 We are adding new software every week, so you don't want to miss out on the latest updates.
               </p>
@@ -72,6 +72,7 @@ export default function NewsletterForm() {
               </p>
             )}
           </form>
+
         </div>
       </div>
     </section>

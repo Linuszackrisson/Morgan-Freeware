@@ -22,7 +22,7 @@ export default function Hero() {
           </h1>
 
           {/* Description */}
-          <p className="text-lg text-[#0B3B3B]/70 mb-8 max-w-2xl">
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl">
             Discover the best free software alternatives for your needs. Get the same results for a fraction of the cost.
           </p>
 
