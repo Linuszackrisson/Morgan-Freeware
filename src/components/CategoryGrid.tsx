@@ -48,7 +48,7 @@ export default function CategoryGrid() {
               href={`/software?category=${encodeURIComponent(name)}`}
               className="group"
             >
-              <div className="p-6 bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+              <div className="p-6 bg-[var(--color-background)] border border-[var(--color-border)] rounded-[var(--border-radius)] transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
                 <div className={`w-12 h-12 ${iconColor} rounded-lg flex items-center justify-center mb-4 bg-[var(--color-primary-light)] border border-[var(--color-border)]`}>
                   <Icon className="w-6 h-6" />
                 </div>

@@ -55,13 +55,13 @@ export default function NewsletterForm() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
                 required
-                className="flex-1 px-6 py-4 rounded-lg border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-light)] outline-none text-[var(--color-text-primary)] text-lg placeholder:text-[var(--color-text-secondary)] transition-all"
+                className="flex-1 px-6 py-4 rounded-[var(--border-radius)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-light)] outline-none text-[var(--color-text-primary)] text-lg placeholder:text-[var(--color-text-secondary)] transition-all"
                 disabled={isSubmitting}
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-[var(--color-primary)] text-[var(--color-background)] px-8 py-4 rounded-lg hover:opacity-90 transition-all duration-300 disabled:opacity-50 whitespace-nowrap text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="bg-[var(--color-primary)] text-[var(--color-background)] px-8 py-4 rounded-[var(--border-radius)] hover:opacity-90 transition-all duration-300 disabled:opacity-50 whitespace-nowrap text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
               </button>

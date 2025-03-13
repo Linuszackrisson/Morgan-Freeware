@@ -11,7 +11,7 @@
     --color-border: theme('colors.gray.100'); /* Våran border-colour */
     --color-background: theme('colors.white'); /* Primära bakgrundsfärgen */
     --color-background-secondary: theme('colors.gray.50'); /* Sekundära bakgrundsfärgen om vi vill ha gradient osv */
-    --border-radius: theme('borderRadius.lg'); /* Våran border-radius för skarpa kort, kanske ändras senare */
+    --border-radius: theme('borderRadius.sm'); /* Våran border-radius för skarpa kort, kanske ändras senare */
   }
 }
 

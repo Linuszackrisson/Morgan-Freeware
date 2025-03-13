@@ -46,7 +46,7 @@ export default function Header() {
             <Link href="/contact" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Contact</Link>
             <Link 
               href="/request" 
-              className="inline-block mt-4 bg-[var(--color-primary)] text-[var(--color-background)] px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="inline-block mt-4 bg-[var(--color-primary)] text-[var(--color-background)] px-6 py-2 rounded-[var(--border-radius)] font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               Request Software
             </Link>

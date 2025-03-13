@@ -22,7 +22,7 @@ export default function Hero() {
           </p>
           <Link 
             href="/software" 
-            className="bg-[var(--color-primary)] text-[var(--color-background)] px-8 py-4 rounded-sm text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            className="bg-[var(--color-primary)] text-[var(--color-background)] px-8 py-4 rounded-[var(--border-radius)] text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             Start Exploring
           </Link>

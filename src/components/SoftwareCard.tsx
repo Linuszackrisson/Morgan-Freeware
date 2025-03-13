@@ -4,7 +4,7 @@ import { Software } from '@/types/software';
 // Orignal kortet som används på startsidan och i övriga delar. VI UTGÅR FRÅN DENNA!!!!!!
 export function SoftwareCard({ software }: { software: Software }) {
   return (
-    <div className="bg-[var(--color-background)] rounded-lg p-6 border border-[var(--color-border)] h-[160px] transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 group">
+    <div className="bg-[var(--color-background)] rounded-[var(--border-radius)] p-6 border border-[var(--color-border)] h-[160px] transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 group">
       <Link href={`/software/${software.id}`} className="block h-full">
         <div className="flex items-center gap-6 h-full">
           {software.icon_url && (
