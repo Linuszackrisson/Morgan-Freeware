@@ -1,5 +1,5 @@
-import { supabase } from '@/utils/supabase';
 import { NextResponse } from 'next/server';
+import { subscribeToNewsletter } from '@/utils/newsletter-service';
 
 export async function POST(request: Request) {
   try {
@@ -12,40 +12,12 @@ export async function POST(request: Request) {
       );
     }
 
-    // Kontroll ifall e-posten redan finns, ingen ska förstöra min db!
-    const { data: existingEmail } = await supabase
-      .from("newsletter")
-      .select("email")
-      .eq("email", email)
-      .single();
-
-    if (existingEmail) {
-      return NextResponse.json(
-        { error: "This email is already subscribed" },
-        { status: 400 }
-      );
-    }
-
-    const { error } = await supabase
-      .from("newsletter")
-      .insert([{ email }]);
-
-    if (error) {
-      console.error('Supabase error:', error);
-      return NextResponse.json(
-        { error: "Failed to subscribe. Please try again." },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json(
-      { message: "Thank you for subscribing!" },
-      { status: 200 }
-    );
+    const result = await subscribeToNewsletter(email);
+    return NextResponse.json(result, { status: 200 });
   } catch (error) {
     console.error('Server error:', error);
     return NextResponse.json(
-      { error: "Something went wrong" },
+      { error: error instanceof Error ? error.message : "Something went wrong" },
       { status: 500 }
     );
   }
