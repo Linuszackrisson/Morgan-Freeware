@@ -1,7 +1,9 @@
 'use client';
+// About page, ingen speciell logik här. 
+// Det är bara en liten text om vad sidan handlar om.
+// Tailwind för styling och Lucide för ikoner.
 
 import { Info, Lightbulb, Palette, Wrench, AlertTriangle } from 'lucide-react';
-
 export default function About() {
   return (
     <div className="container mx-auto px-4 py-16">

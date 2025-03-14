@@ -1,5 +1,6 @@
-import { supabase } from '@/utils/supabase';
+import { supabase } from '@/utils/supabase'; // Importerar supabase-klienten, inget konstigt. 
 
+// Hämtar ALLA programmen, används i software page där vi visar alla program.
 export async function getAllSoftware(category?: string) {
   const query = supabase
     .from('software')
@@ -15,6 +16,7 @@ export async function getAllSoftware(category?: string) {
   return data;
 }
 
+// Hämtar ett program med ett specifikt id
 export async function getSoftwareById(id: string) {
   const { data, error } = await supabase
     .from('software')
@@ -25,7 +27,7 @@ export async function getSoftwareById(id: string) {
   if (error) throw error;
   return data;
 }
-
+// hämtar program per kategori 
 export async function getCategories() {
   const { data, error } = await supabase
     .from('software')
@@ -33,23 +35,4 @@ export async function getCategories() {
 
   if (error) throw error;
   return [...new Set(data.map(item => item.category))];
-}
-
-export async function updateSoftwareRating(id: string, newRating: number) {
-  const { data: software } = await supabase
-    .from('software')
-    .select('average_rating, total_ratings')
-    .eq('id', id)
-    .single();
-
-  const total = (software?.total_ratings || 0) + 1;
-  const average = ((software?.average_rating || 0) * (total - 1) + newRating) / total;
-
-  const { error } = await supabase
-    .from('software')
-    .update({ average_rating: average, total_ratings: total })
-    .eq('id', id);
-
-  if (error) throw error;
-  return { average_rating: average, total_ratings: total };
 } 

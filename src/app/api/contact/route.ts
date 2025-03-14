@@ -1,4 +1,4 @@
-// api-route för kontaktformuläret, den förra blev slarvigt namngiven så jag gör bara denna sepparat tills vidare, detta är inte prio atm.
+
 
 import { supabase } from '@/utils/supabase';
 import { NextResponse } from 'next/server';
