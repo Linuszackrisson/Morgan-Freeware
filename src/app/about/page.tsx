@@ -6,7 +6,7 @@
 import { Info, Lightbulb, Palette, Wrench, AlertTriangle } from 'lucide-react';
 export default function About() {
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-16 min-h-screen">
       <div className="max-w-4xl mx-auto space-y-16">
         <h1 className="text-4xl font-bold text-[var(--color-text-primary)] flex items-center gap-4">
           <Info className="w-10 h-10 text-[var(--color-primary)]" />
