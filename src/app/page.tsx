@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Software } from '@/types/software';
 import HeroSection from '@/components/Hero';
 import CategoryGrid from '@/components/CategoryGrid';
-import { getAllSoftware } from '@/app/api/software/route';
+import { getAllSoftware } from '@/utils/software-service';
 import SoftwareGrid from '@/components/SoftwareGrid';
 import NewsletterForm from '@/components/Newsletter';
 export default function Home() {

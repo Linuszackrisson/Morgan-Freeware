@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Software } from '@/types/software';
-import { getSoftwareById, getAllSoftware, updateSoftwareRating } from '@/app/api/software/route';
+import { getSoftwareById, getAllSoftware, updateSoftwareRating } from '@/utils/software-service';
 import { SoftwareCard } from '@/components/SoftwareCard';
 import { RatingStars } from '@/components/RatingStars';
 

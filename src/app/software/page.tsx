@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Software } from '@/types/software';
 import { SoftwareCard } from '@/components/SoftwareCard';
-import { getAllSoftware, getCategories } from '@/app/api/software/route';
+import { getAllSoftware, getCategories } from '@/utils/software-service';
 
 export default function SoftwarePage() {
   const [software, setSoftware] = useState<Software[]>([]);
