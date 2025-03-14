@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Software } from '@/types/software';
 import { SoftwareCard } from '@/components/SoftwareCard';
 import { getAllSoftware, getCategories } from '@/utils/software-service';
 
-export default function SoftwarePage() {
+function SoftwareContent() {
   const [software, setSoftware] = useState<Software[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -58,9 +58,7 @@ export default function SoftwarePage() {
 
   return (
     <section className="w-full min-h-screen relative bg-white">
-
       <div className="container py-16">
-        
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-4">Software Collection</h1>
           <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
@@ -68,7 +66,6 @@ export default function SoftwarePage() {
           </p>
         </div>
 
-        
         <div className="mb-12">
           <div className="flex flex-wrap justify-center gap-3">
             <button
@@ -111,14 +108,12 @@ export default function SoftwarePage() {
           </div>
         </div>
 
-        {/* Software Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {currentSoftware.map((item) => (
             <SoftwareCard key={item.id} software={item} />
           ))}
         </div>
 
-        {/* Pagination Controls */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-2 mt-12">
             <button
@@ -162,5 +157,13 @@ export default function SoftwarePage() {
         )}
       </div>
     </section>
+  );
+}
+
+export default function SoftwarePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SoftwareContent />
+    </Suspense>
   );
 } 
