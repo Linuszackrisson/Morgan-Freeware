@@ -4,12 +4,6 @@ import { SoftwareCard } from '@/components/SoftwareCard';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
 export async function generateStaticParams() {
   const software = await getAllSoftware();
   
@@ -18,8 +12,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function SoftwarePage({ params }: PageProps) {
-  const software = await getSoftwareById(params.id);
+export default async function SoftwarePage(props: any) {
+  const software = await getSoftwareById(props.params.id);
   
   if (!software) {
     return <div>Software not found</div>;
