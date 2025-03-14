@@ -1,19 +1,15 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
 
 const config: NextConfig = {
-  // Ta bort output: 'export' helt och hållet eftersom Render inte stöder det
-  // ...(process.env.NODE_ENV === 'production' ? { output: 'export' } : {}), // Ta bort denna rad
-  
+  // Inaktivera bildoptimering om du använder statisk export
   images: {
-    unoptimized: true // Inaktivera bildoptimering om du använder statiska export
+    unoptimized: true,
   },
-  
-  // Använd basePath endast i produktion
-  basePath: process.env.NODE_ENV === 'production' ? '/Morgan-Freeware' : '',
-  
-  eslint: {
-    ignoreDuringBuilds: true // Ignorera ESLint-fel under byggprocessen
-  }
-}
 
-export default config
+  // Ignorera ESLint-fel under byggprocessen
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
+
+export default config;
