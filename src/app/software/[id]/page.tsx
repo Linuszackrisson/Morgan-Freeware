@@ -11,11 +11,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function SoftwarePage({
-  params,
-}: {
+type Props = {
   params: { id: string }
-}) {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export default async function SoftwarePage({ params, searchParams }: Props) {
   const software = await getSoftwareById(params.id);
   
   if (!software) {
