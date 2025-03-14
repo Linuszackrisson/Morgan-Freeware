@@ -1,5 +1,4 @@
 import { getSoftwareById, getAllSoftware } from '@/utils/software-service';
-import { SoftwareRating } from '@/components/SoftwareRating';
 import { SoftwareCard } from '@/components/SoftwareCard';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -47,7 +46,6 @@ export default async function SoftwarePage(props: any) {
                 <span className="inline-block border border-[var(--color-border)] text-[var(--color-text-secondary)] px-6 py-2 text-base rounded-[var(--border-radius)] font-medium">
                   {software.category}
                 </span>
-                <SoftwareRating software={software} />
               </div>
             </div>
           </div>
