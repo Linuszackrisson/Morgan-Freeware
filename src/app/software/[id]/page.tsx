@@ -1,54 +1,28 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
-import { Software } from '@/types/software';
-import { getSoftwareById, getAllSoftware, updateSoftwareRating } from '@/utils/software-service';
+import { getSoftwareById, getAllSoftware } from '@/utils/software-service';
+import { SoftwareRating } from '@/components/SoftwareRating';
 import { SoftwareCard } from '@/components/SoftwareCard';
-import { RatingStars } from '@/components/RatingStars';
+import Link from 'next/link';
 
-export default function SoftwareDetail() {
-  const { id } = useParams();
-  const [software, setSoftware] = useState<Software | null>(null);
-  const [relatedSoftware, setRelatedSoftware] = useState<Software[]>([]);
- 
+export async function generateStaticParams() {
+  const software = await getAllSoftware();
+  
+  return software.map((item) => ({
+    id: item.id.toString(),
+  }));
+}
 
-  // Hämtar software från databasen och sätter det i state, och plockar ut alla i samma kategori
-  // Jag hatar sådana här grötiga funktioner men det var nödvändigt att ha, annars hade software pagen blivit väldigt tråkig
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getSoftwareById(id as string);
-        setSoftware(data);
-        
-        const related = await getAllSoftware(data.category);
-        setRelatedSoftware(related.filter(s => s.id !== data.id).slice(0, 4));
-      } catch (error) {
-        console.error('Error fetching software:', error);
-      }
-    };
+export default async function SoftwarePage({ params }: { params: { id: string } }) {
+  const software = await getSoftwareById(params.id);
+  
+  if (!software) {
+    return <div>Software not found</div>;
+  }
 
-    fetchData();
-  }, [id]);
-  // uppdaterar ratingen för softwaren och sätter det i local storage eftersom vi inte har användare, och jag vill inte ha massa spammade ratingar
-  // men databasen uppdateras ändå
-  const handleRate = async (rating: number) => {
-    try {
-      const result = await updateSoftwareRating(id as string, rating);
-      setSoftware(prev => prev ? { ...prev, ...result } : null);
-      
-      // Spara att användaren har röstat
-      const rated = JSON.parse(localStorage.getItem('ratedSoftware') || '[]');
-      localStorage.setItem('ratedSoftware', JSON.stringify([...rated, id]));
-    } catch (error) {
-      console.error('Error updating rating:', error);
-    }
-  };
-
-  if (!software) return null;
- // vi kollar om besökare har röstat, den kan ju i teorin rösta flera gånger om man orkar rensa sin local storage
-  const hasRated = JSON.parse(localStorage.getItem('ratedSoftware') || '[]').includes(id);
+  // Hämta relaterad programvara på serversidan
+  const allSoftware = await getAllSoftware(software.category);
+  const relatedSoftware = allSoftware
+    .filter(s => s.id !== software.id)
+    .slice(0, 4);
 
   return (
     <section className="w-full">
@@ -72,11 +46,7 @@ export default function SoftwareDetail() {
                 <span className="inline-block border border-[var(--color-border)] text-[var(--color-text-secondary)] px-6 py-2 text-base rounded-[var(--border-radius)] font-medium">
                   {software.category}
                 </span>
-                <RatingStars
-                  rating={software.average_rating}
-                  total={software.total_ratings}
-                  onRate={!hasRated ? handleRate : undefined}
-                />
+                <SoftwareRating software={software} />
               </div>
             </div>
           </div>

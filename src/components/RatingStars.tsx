@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import { SoftwareRating } from '@/components/SoftwareRating';
 
 interface RatingStarsProps {
   rating: number | null;
