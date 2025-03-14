@@ -11,4 +11,4 @@ export interface Software {
   total_ratings: number;
 } 
 
-// enda interfacet jag behöver hoppas jag på.. 
+

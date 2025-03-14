@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getAllSoftware, getSoftwareById, getCategories } from '@/utils/software-service';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-static'; 
 export const revalidate = false;
 
 export async function GET(request: Request) {

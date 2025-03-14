@@ -1,33 +1,29 @@
-
-
-import { supabase } from '@/utils/supabase';
 import { NextResponse } from 'next/server';
+import { contactService } from '@/utils/contact-service';
+import { ContactFormData } from '@/types/contact';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const data: ContactFormData = await request.json();
 
-    // simpel validering, vi håller det så tills vidare detta är inte prio
-    if (!name || !email || !message) {
+    if (!data.name || !data.email || !data.message) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
       );
     }
 
-    const { error } = await supabase
-      .from("contact") // vi väljer contact tabellen, älskar supabase
-      .insert([{ name, email, message }]);
+    const result = await contactService.submitContactForm(data);
 
-    if (error) {
+    if (!result.success) {
       return NextResponse.json(
-        { error: error.message },
+        { error: result.error },
         { status: 500 }
       );
     }
 
     return NextResponse.json(
-      { message: "Thank you for your message!" },
+      { message: result.message },
       { status: 200 }
     );
   } catch (error) {
