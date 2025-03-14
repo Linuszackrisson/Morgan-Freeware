@@ -1,13 +1,17 @@
 import type { NextConfig } from 'next'
 
 const config: NextConfig = {
-  output: 'export',
+  // Ta bort output: 'export' under utveckling för att API routes ska fungera
+  ...(process.env.NODE_ENV === 'production' ? { output: 'export' } : {}),
+  
   images: {
     unoptimized: true
   },
-  basePath: '/Morgan-Freeware',
+  
+  // Använd basePath endast i produktion
+  basePath: process.env.NODE_ENV === 'production' ? '/Morgan-Freeware' : '',
+  
   eslint: {
-    // Stäng av ESLint under build
     ignoreDuringBuilds: true
   }
 }
