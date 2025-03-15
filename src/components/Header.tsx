@@ -27,7 +27,7 @@ export default function Header() {
             <Link href="/" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Home</Link>
             <Link href="/software" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Software</Link>
             <Link href="/about" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">About</Link>
-            <Link href="/contact" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Contact</Link>
+            <Link href="/#contact" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Contact</Link>
           </nav>
 
           <Link 
@@ -43,7 +43,7 @@ export default function Header() {
             <Link href="/" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Home</Link>
             <Link href="/software" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Software</Link>
             <Link href="/about" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">About</Link>
-            <Link href="/contact" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Contact</Link>
+            <Link href="/#contact" className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">Contact</Link>
             <Link 
               href="/request" 
               className="inline-block mt-4 bg-[var(--color-primary)] text-[var(--color-background)] px-6 py-2 rounded-[var(--border-radius)] font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"

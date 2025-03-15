@@ -22,7 +22,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="w-full py-24 bg-white">
+    <section id="contact" className="w-full py-24 bg-white">
       <div className="container max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
