@@ -7,6 +7,7 @@ import { getAllSoftware } from '@/utils/software-service';
 import SoftwareGrid from '@/components/SoftwareGrid';
 import NewsletterForm from '@/components/Newsletter';
 import TestimonialSlider from '@/components/TestimonialSlider';
+import ContactForm from '@/components/ContactForm';
 export default function Home() {
   const [software, setSoftware] = useState<Software[]>([]);
 
@@ -24,6 +25,7 @@ export default function Home() {
         <CategoryGrid />
         <NewsletterForm />
         <TestimonialSlider />
+        <ContactForm />
         </div>
       </main>
   );
