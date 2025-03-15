@@ -13,19 +13,12 @@ export default function NewsletterForm() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch('/api/newsletter', {
+      await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
-
-      const data = await res.json();
-      setMessage(data.message || data.error);
-      if (res.ok) {
-        setEmail('');
-      }
-    } catch (error) {
-      setMessage('Something went wrong. Please try again.');
+      setEmail(''); 
     } finally {
       setIsSubmitting(false);
     }
