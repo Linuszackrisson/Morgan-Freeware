@@ -6,11 +6,9 @@ import { Mail } from 'lucide-react';
 export default function NewsletterForm() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
     try {
       await fetch('/api/newsletter', {
@@ -18,9 +16,10 @@ export default function NewsletterForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
-      setEmail(''); 
-    } finally {
-      setIsSubmitting(false);
+      setEmail('');
+      setMessage('Thank you for subscribing!');
+    } catch (error) {
+      setMessage('Something went wrong. Please try again.');
     }
   };
 
@@ -40,7 +39,7 @@ export default function NewsletterForm() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="w-full max-w-2xl">
+          <form onSubmit={handleSubmit} className="w-full max-w-xl">
             <div className="flex flex-col sm:flex-row gap-4">
               <input
                 type="email"
@@ -49,18 +48,16 @@ export default function NewsletterForm() {
                 placeholder="Enter your email address"
                 required
                 className="flex-1 px-6 py-4 rounded-[var(--border-radius)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-light)] outline-none text-[var(--color-text-primary)] text-lg placeholder:text-[var(--color-text-secondary)] transition-all"
-                disabled={isSubmitting}
               />
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="bg-[var(--color-primary)] text-[var(--color-background)] px-8 py-4 rounded-[var(--border-radius)] hover:opacity-90 transition-all duration-300 disabled:opacity-50 whitespace-nowrap text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="bg-[var(--color-primary)] text-[var(--color-background)] px-8 py-4 rounded-[var(--border-radius)] hover:opacity-90 transition-all duration-300 whitespace-nowrap text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
+                Subscribe Now
               </button>
             </div>
             {message && (
-              <p className={`mt-4 text-base ${message.includes('error') ? 'text-red-500' : 'text-green-500'}`}>
+              <p className={`mt-4 text-base ${message.includes('wrong') ? 'text-red-500' : 'text-green-500'}`}>
                 {message}
               </p>
             )}

@@ -4,11 +4,10 @@ import { MessageCircle } from "lucide-react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSending, setIsSending] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSending(true);
     
     try {
       await fetch('/api/contact', {
@@ -16,9 +15,10 @@ export default function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      setFormData({ name: '', email: '', message: '' }); 
-    } finally {
-      setIsSending(false);
+      setFormData({ name: '', email: '', message: '' });
+      setMessage('Thank you for your message!');
+    } catch (error) {
+      setMessage('Something went wrong. Please try again.');
     }
   };
 
@@ -70,12 +70,17 @@ export default function ContactForm() {
               placeholder="Message"
             />
 
+            {message && (
+              <p className={`text-base ${message.includes('wrong') ? 'text-red-500' : 'text-green-500'}`}>
+                {message}
+              </p>
+            )}
+
             <button
               type="submit"
-              disabled={isSending}
-              className="w-full bg-[var(--color-primary)] text-white px-8 py-3 rounded-[var(--border-radius)] hover:opacity-90 transition-all font-medium"
+              className="w-full bg-[var(--color-primary)] text-[var(--color-background)] px-8 py-4 rounded-[var(--border-radius)] hover:opacity-90 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              {isSending ? 'Sending...' : 'Send'}
+              Send
             </button>
           </form>
         </div>
