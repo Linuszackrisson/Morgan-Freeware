@@ -1,7 +1,7 @@
 import { getSoftwareById, getAllSoftware } from '@/utils/software-service';
 import { SoftwareCard } from '@/components/SoftwareCard';
+import { SoftwareRating } from '@/components/SoftwareRating';
 import Link from 'next/link';
-import { Metadata } from 'next';
 
 export async function generateStaticParams() {
   const software = await getAllSoftware();
@@ -11,14 +11,14 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function SoftwarePage(props: any) {
-  const software = await getSoftwareById(props.params.id);
+export default async function SoftwarePage({ params }: { params: { id: string } }) {
+  const software = await getSoftwareById(params.id);
   
   if (!software) {
     return <div>Software not found</div>;
   }
 
-  // Hämta relaterad programvara på serversidan
+  // Hämta relaterad programvara
   const allSoftware = await getAllSoftware(software.category);
   const relatedSoftware = allSoftware
     .filter(s => s.id !== software.id)
@@ -42,10 +42,15 @@ export default async function SoftwarePage(props: any) {
               <h1 className="text-4xl md:text-6xl font-bold text-[var(--color-text-primary)] mb-4 text-center md:text-left">
                 {software.title}
               </h1>
-              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-0 md:justify-between md:mr-6">
+              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                 <span className="inline-block border border-[var(--color-border)] text-[var(--color-text-secondary)] px-6 py-2 text-base rounded-[var(--border-radius)] font-medium">
                   {software.category}
                 </span>
+                <SoftwareRating
+                  softwareId={software.id}
+                  initialRating={software.average_rating}
+                  totalRatings={software.total_ratings}
+                />
               </div>
             </div>
           </div>

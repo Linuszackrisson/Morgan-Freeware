@@ -35,4 +35,38 @@ export async function getCategories() {
 
   if (error) throw error;
   return [...new Set(data.map(item => item.category))];
+}
+
+export async function rateSoftware(softwareId: string, rating: number) {
+  // Hämta nuvarande software data
+  const { data: software, error: fetchError } = await supabase
+    .from('software')
+    .select('total_ratings, average_rating')
+    .eq('id', softwareId)
+    .single();
+
+  if (fetchError) throw fetchError;
+
+  // Beräkna ny genomsnittlig rating
+  const currentTotal = software.total_ratings || 0;
+  const currentAverage = software.average_rating || 0;
+  const newTotal = currentTotal + 1;
+  const newAverage = ((currentAverage * currentTotal) + rating) / newTotal;
+
+  // Uppdatera software med ny rating
+  const { error: updateError } = await supabase
+    .from('software')
+    .update({
+      total_ratings: newTotal,
+      average_rating: newAverage
+    })
+    .eq('id', softwareId);
+
+  if (updateError) throw updateError;
+
+  return {
+    success: true,
+    newAverage: newAverage,
+    totalRatings: newTotal
+  };
 } 
