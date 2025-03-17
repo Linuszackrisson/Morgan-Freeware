@@ -22,13 +22,12 @@ export async function POST(request: Request) {
       );
     }
 
-    return NextResponse.json(
-      { message: result.message },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: result.message });
+
   } catch (error) {
+    console.error('Contact form submission error:', error);
     return NextResponse.json(
-      { error: "Something went wrong" },
+      { error: error instanceof Error ? error.message : "An unexpected error occurred" },
       { status: 500 }
     );
   }

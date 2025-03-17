@@ -13,11 +13,12 @@ export async function POST(request: Request) {
     }
 
     const result = await subscribeToNewsletter(email);
-    return NextResponse.json(result, { status: 200 });
+    return NextResponse.json(result);
+
   } catch (error) {
-    console.error('Server error:', error);
+    console.error('Newsletter subscription error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Something went wrong" },
+      { error: error instanceof Error ? error.message : "An unexpected error occurred" },
       { status: 500 }
     );
   }

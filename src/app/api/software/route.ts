@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getAllSoftware, getSoftwareById, getCategories } from '@/utils/software-service';
 
-export const dynamic = 'force-static'; 
+export const dynamic = 'force-static';
 export const revalidate = false;
 
 export async function GET(request: Request) {
@@ -12,6 +12,12 @@ export async function GET(request: Request) {
 
     if (id) {
       const software = await getSoftwareById(id);
+      if (!software) {
+        return NextResponse.json(
+          { error: 'Software not found' },
+          { status: 404 }
+        );
+      }
       return NextResponse.json(software);
     }
 
@@ -22,9 +28,11 @@ export async function GET(request: Request) {
 
     const software = await getAllSoftware(category || undefined);
     return NextResponse.json(software);
+
   } catch (error) {
+    console.error('Software fetch error:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch software' },
+      { error: error instanceof Error ? error.message : "An unexpected error occurred" },
       { status: 500 }
     );
   }
