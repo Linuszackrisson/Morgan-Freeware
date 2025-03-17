@@ -1,33 +1,41 @@
+'use client';
+
 import { getSoftwareById, getAllSoftware } from '@/utils/software-service';
 import { SoftwareCard } from '@/components/SoftwareCard';
-import { SoftwareRating } from '@/components/SoftwareRating';
+import { RatingStars } from '@/components/RatingStars';
 import Link from 'next/link';
+import { useState, useEffect, use } from 'react';
+import { Software } from '@/types/software';
 
-export async function generateStaticParams() {
-  const software = await getAllSoftware();
-  
-  return software.map((item) => ({
-    id: item.id.toString(),
-  }));
-}
-
-export default async function SoftwarePage({
+export default function SoftwarePage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const resolvedParams = await params;
-  const software = await getSoftwareById(resolvedParams.id);
-  
-  if (!software) {
-    return <div>Software not found</div>;
-  }
+  const resolvedParams = use(params);
+  const [currentRating, setCurrentRating] = useState<number>(0);
+  const [software, setSoftware] = useState<Software | null>(null);
+  const [relatedSoftware, setRelatedSoftware] = useState<Software[]>([]);
 
-  // Hämta relaterad programvara
-  const allSoftware = await getAllSoftware(software.category);
-  const relatedSoftware = allSoftware
-    .filter(s => s.id !== software.id)
-    .slice(0, 4);
+  useEffect(() => {
+    const loadData = async () => {
+      const softwareData = await getSoftwareById(resolvedParams.id);
+      setSoftware(softwareData);
+      setCurrentRating(softwareData.rating || 0);
+
+      const allSoftware = await getAllSoftware(softwareData.category);
+      const related = allSoftware
+        .filter(s => s.id !== softwareData.id)
+        .slice(0, 4);
+      setRelatedSoftware(related);
+    };
+
+    loadData();
+  }, [resolvedParams.id]);
+
+  if (!software) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <section className="w-full">
@@ -51,10 +59,10 @@ export default async function SoftwarePage({
                 <span className="inline-block border border-[var(--color-border)] text-[var(--color-text-secondary)] px-6 py-2 text-base rounded-[var(--border-radius)] font-medium">
                   {software.category}
                 </span>
-                <SoftwareRating
+                <RatingStars
                   softwareId={software.id}
-                  initialRating={software.average_rating}
-                  totalRatings={software.total_ratings}
+                  rating={currentRating}
+                  onRatingSubmitted={setCurrentRating}
                 />
               </div>
             </div>
