@@ -14,9 +14,10 @@ export async function generateStaticParams() {
 export default async function SoftwarePage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const software = await getSoftwareById(params.id);
+  const resolvedParams = await params;
+  const software = await getSoftwareById(resolvedParams.id);
   
   if (!software) {
     return <div>Software not found</div>;
