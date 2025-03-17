@@ -3,10 +3,6 @@ import { SoftwareCard } from '@/components/SoftwareCard';
 import { SoftwareRating } from '@/components/SoftwareRating';
 import Link from 'next/link';
 
-interface PageParams {
-  id: string;
-}
-
 export async function generateStaticParams() {
   const software = await getAllSoftware();
   
@@ -18,7 +14,7 @@ export async function generateStaticParams() {
 export default async function SoftwarePage({
   params,
 }: {
-  params: PageParams;
+  params: { id: string };
 }) {
   const software = await getSoftwareById(params.id);
   
