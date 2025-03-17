@@ -3,6 +3,11 @@ import { SoftwareCard } from '@/components/SoftwareCard';
 import { SoftwareRating } from '@/components/SoftwareRating';
 import Link from 'next/link';
 
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
 export async function generateStaticParams() {
   const software = await getAllSoftware();
   
@@ -11,12 +16,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function SoftwarePage({
-  params,
-}: {
-  params: { id: string }
-}) {
-  const software = await getSoftwareById(params.id);
+export default async function SoftwarePage(props: Props) {
+  const software = await getSoftwareById(props.params.id);
   
   if (!software) {
     return <div>Software not found</div>;
