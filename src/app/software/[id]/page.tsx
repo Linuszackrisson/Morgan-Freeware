@@ -1,40 +1,42 @@
-'use client';
-
-import { getSoftwareById, getAllSoftware } from '@/utils/software-service';
+'use client'; // ser till att den körs på klienten och inte servern eftersom vi har useEffect
+// importerar alla nödvändiga funktioner och komponenter
+import { getSoftwareById, getAllSoftware } from '@/utils/software-service'; 
 import { SoftwareCard } from '@/components/SoftwareCard';
 import { RatingStars } from '@/components/RatingStars';
 import Link from 'next/link';
 import { useState, useEffect, use } from 'react';
 import { Software } from '@/types/software';
 
-export default function SoftwarePage({
+export default function SoftwarePage({ 
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>; // vi har en dynamisk route med [id] och därför måste vi ha params som promise efter nextjs behöver tid att hämta och validera parametrerna innan kompoenten kan användas.
 }) {
-  const resolvedParams = use(params); 
+  const resolvedParams = use(params);  // "packar upp" vårt id från url:en
+
+  // några states för att hålla koll på våra data
   const [currentRating, setCurrentRating] = useState<number>(0);
   const [software, setSoftware] = useState<Software | null>(null);
   const [relatedSoftware, setRelatedSoftware] = useState<Software[]>([]);
 
-  useEffect(() => {
+  useEffect(() => { 
     const loadData = async () => {
-      const softwareData = await getSoftwareById(resolvedParams.id);
-      setSoftware(softwareData);
-      setCurrentRating(softwareData.rating || 0);
+      const softwareData = await getSoftwareById(resolvedParams.id); // hämtar vår software data specifikt med id:t
+      setSoftware(softwareData); // sätter vår software till vår hämtade software data
+      setCurrentRating(softwareData.rating || 0); // sätter vår rating till vår software rating eller 0 om det inte finns någon rating, ska finnas på alla snart men ifall. Så vi iaf får något värde.
 
-      const allSoftware = await getAllSoftware(softwareData.category);
+      const allSoftware = await getAllSoftware(softwareData.category); // hämtar alla software i samma kategori
       const related = allSoftware
-        .filter(s => s.id !== softwareData.id)
-        .slice(0, 4);
-      setRelatedSoftware(related);
+        .filter(s => s.id !== softwareData.id) // filtrerar bort vår egen software så vi inte får dubbelt
+        .slice(0, 4); // tar bara de fyra första (finns inte ens fyra i nuläget men hoppas på att hinna fylla på senare)
+      setRelatedSoftware(related); // sätter våra relaterade software till våra hämtade software
     };
 
-    loadData();
-  }, [resolvedParams.id]);
+    loadData(); // kör vår loadData funktion
+  }, [resolvedParams.id]); // kör funktionen igenom vårt id
 
   if (!software) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>; // om vår software är null så returnera loading, just in case
   }
 
   return (
