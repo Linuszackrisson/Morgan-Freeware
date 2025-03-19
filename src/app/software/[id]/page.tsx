@@ -12,7 +12,7 @@ export default function SoftwarePage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const resolvedParams = use(params);
+  const resolvedParams = use(params); 
   const [currentRating, setCurrentRating] = useState<number>(0);
   const [software, setSoftware] = useState<Software | null>(null);
   const [relatedSoftware, setRelatedSoftware] = useState<Software[]>([]);
