@@ -20,8 +20,7 @@
 
 ### Live-demo
 
-[[Testa här](https://morgan-freeware.vercel.app/)](#https://morgan-freeware.vercel.app/)
-
+[[Testa här](https://morgan-freeware.vercel.app/)]
 ## Idé
 
 Morgan FreeWare föddes ur en enkel tanke: "Jag har inga pengar" Nej då, skämt o sido. Jag använder mycket olika programvaror och att dom är konstandsfria är bara ett stort plus.
