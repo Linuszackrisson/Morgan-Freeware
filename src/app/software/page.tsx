@@ -1,40 +1,43 @@
-'use client';
+'use client'; //klient sida eftersom vi har useEffect och useSearchParams, vi eftersom dessa inte kan användas direkt på servern. 
 
+
+// importerar alla nödvändiga funktioner och komponenter
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Software } from '@/types/software';
 import { SoftwareCard } from '@/components/SoftwareCard';
 import { getAllSoftware, getCategories } from '@/utils/software-service';
 
+// skapar en funktion för att hämta våra software och kategorier
 function SoftwareContent() {
-  const [software, setSoftware] = useState<Software[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-  const searchParams = useSearchParams();
-  const router = useRouter();
+  const [software, setSoftware] = useState<Software[]>([]); //array för dessa data
+  const [categories, setCategories] = useState<string[]>([]); //array för dessa data
+  const [selectedCategory, setSelectedCategory] = useState<string>('all'); //state för att hålla koll på våra valda kategorier
+  const [currentPage, setCurrentPage] = useState(1); //state för att hålla koll på våra valda sidor
+  const itemsPerPage = 10; //antal items per sida. Tio var lagom för jag vill fortfarande visa korten snyggt.
+  const searchParams = useSearchParams(); //hämtar våra search params som vi kommer använda för att hämta våra kategorier och sidor när vi klickar på knapparna för att gå fram o tbx
+  const router = useRouter(); //hämtar våra router som vi kommer använda för att navigera mellan sidor
 
   useEffect(() => {
-    const category = searchParams.get('category');
-    const page = searchParams.get('page');
+    const category = searchParams.get('category'); //hämtar våra kategorier
+    const page = searchParams.get('page'); //hämtar våra sidor
     
     if (category) {
-      setSelectedCategory(category);
+      setSelectedCategory(category); //sätter våra kategori, kan även vara all
     }
     if (page) {
-      setCurrentPage(parseInt(page));
+      setCurrentPage(parseInt(page)); //sätter våra sidor
     }
-  }, [searchParams]);
+  }, [searchParams]); //kör funktionen igenom våra search params
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const [softwareData, categoriesData] = await Promise.all([
+        const [softwareData, categoriesData] = await Promise.all([ //promise.all är en funktion som gör att vi kan köra flera promises samtidigt, vi kommer använda detta för att hämta våra software och kategorier samtidigt
           getAllSoftware(selectedCategory),
           getCategories()
         ]);
-        setSoftware(softwareData);
+        setSoftware(softwareData); 
         setCategories(categoriesData);
       } catch (error) {
         console.error('Error fetching data:', error);
