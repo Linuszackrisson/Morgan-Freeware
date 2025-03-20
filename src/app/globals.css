@@ -13,10 +13,12 @@
     --color-background-secondary: theme('colors.gray.50'); /* Sekundära bakgrundsfärgen om vi vill ha gradient osv */
     --border-radius: theme('borderRadius.sm'); /* Våran border-radius för skarpa kort, kanske ändras senare */
   }
+
+  .container {
+    @apply max-w-6xl mx-auto px-4;
+  }
+  
 }
 
-.container {
-  @apply max-w-6xl mx-auto px-4;
-}
 
 
