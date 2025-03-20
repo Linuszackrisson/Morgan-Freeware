@@ -42,10 +42,10 @@ Många tror att man måste betala dyra månadsavgifter för att kunna **redigera
 
 ### Förberedelse – Frontend
 
-Jag satte upp ett **Next.js-projekt** tidigt, och eftersom jag redan hade testat flera prototyper, jag visste typ hur jag ville att det skulle se ut.
+Jag satte upp ett **Next.js-projekt** tidigt, och eftersom jag redan hade testat flera prototyper, jag visste TYP hur jag ville att det skulle se ut.
 
 - Jag skapade sidor, undersidor och enkla komponenter
-- Säkerställde att navigeringen fungerade smidigt (Tack Next.js för att du gjorde det enkelt)
+- Säkerställde att navigeringen fungerade smidigt (Tack Next.js för att du gjorde det smidigt)
 - Försökte för en gångs skull vara noga med mappstruktur
 - Även fördelningar av komponenter, så jag kunde återanvända så mycket som möjligt.
 
@@ -64,7 +64,8 @@ För att hantera data använde jag **Supabase** – ett enkelt och kraftfullt ve
 
 > Supabase gjorde processen smidig, men jag stötte ändå på problem...
 
-När jag försökte fylla databasen med **AI-genererade listor** av programvara upptäckte jag snabbt att många **ikon-länkar var döda**. Jag insåg att jag behövde välja ikoner **manuellt** – något jag först såg som en nackdel, men som gjorde sidan mycket snyggare i slutändan.
+När jag försökte fylla databasen med **AI-genererade listor** av programvara upptäckte jag snabbt att många **ikon-länkar var döda**. Jag insåg att jag behövde välja ikoner **manuellt** – något som tog mycket lång tid
+och därför anledningen att jag inte har mer än 25 program i databasen just nu.
 
 När databasen väl var klar och fungerade kunde jag se hur korten **mappades ut och visades** på sidan.
 
@@ -74,21 +75,17 @@ När databasen väl var klar och fungerade kunde jag se hur korten **mappades ut
 
 ### Inspiration och tankesätt
 
-Jag älskar att göra saker snygga, men jag är **inte** den som sitter i **Figma** och skissar i timmar – för mig är det slöseri med tid, för jag är ingen designer.
+Jag älskar att göra saker snygga, men jag är **inte** den som sitter i **Figma** och skissar i timmar – för MIG personligen, är det slöseri med tid, för jag är ingen designer.
 
 Istället vände jag mig till **Pinterest** och liknande sidor. Där bläddrade jag igenom **hero-sektioner, gridlayouter och UI-komponenter** för att hitta inspiration.
 
 Min process var enkel:
 
-1. Jag visualiserade designen i huvudet
-2. Jag hade Pinterest på ena skärmen och koden på den andra
-3. Jag kodade en komponent i taget:
-   - **HeroSection**
-   - **SoftwareCards**
-   - **SoftwareGrid**
-   - **CategoryCard**
-   - **Software-sidan**
-   - **Osv**
+1. Bläddra på Pintrest och sidor som Dribble
+2. Bli inspirered 
+3. Sno design-idé
+4. Lägg till personlig touch
+
 
 För att skapa en enhetlig look försökte jag **återanvända samma avstånd, textstorlek och färger** över hela sidan.
 
@@ -96,15 +93,7 @@ För att skapa en enhetlig look försökte jag **återanvända samma avstånd, t
 
 ### Färgschema – Ljusare, modernare och öppnare
 
-Jag ville att Morgan FreeWare skulle kännas **”techig”**, men samtidigt **välkomnande**.
-
-Dark mode? Nej, det kändes inte rätt.\
-Jag ville istället ha en **ljus och modern look**, så jag valde:
-
-- **Vitt, grått och svart** som basfärger
-- **Rött, blått, gult och grönt** som accentfärger på små detaljer
-
-Plot twist **Jag stal färgerna från en redan existerande sida.**
+Jag har nog testat hundra olika färgkombinationer, och slutade på grönt och vitt. För jag gillar färgen grön... och light mode!
 
 ---
 
@@ -113,7 +102,7 @@ Plot twist **Jag stal färgerna från en redan existerande sida.**
 När allt började falla på plats var det dags att lägga till **de sista detaljerna** som gjorde sidan komplett.
 
 - Ett **kontaktformulär** kopplat till Supabase
-- En **Om oss-sida** där jag berättar om projektet
-- Nya databaskolumner för **rating, genomsnittligt betyg och totalbetyg**
+- En **Om oss-sida** där jag berättar om sidan
 - Massor av små förbättringar och finjusteringar
+
 
