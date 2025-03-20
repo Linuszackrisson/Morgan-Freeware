@@ -1,17 +1,19 @@
 'use client';
 import { Star } from 'lucide-react';
+import david from '../../public/assets/david.jpg';
+import marcus from '../../public/assets/marcus.jpg';
 
 const testimonials = [
   {
     name: "David Tapio",
     role: "Waste Management Techniques",
-    image: "https://media.discordapp.net/attachments/275901933607452674/1350215111683342386/IMG_3269.jpg?ex=67d5ed50&is=67d49bd0&hm=5d7b8fd110cd72e56de0bc609b7ea13f071181558b6be5d0d26cd87d3ce72185&=&format=webp",
+    image: david.src,
     text: "I used to spend around 500 dollars a month on paid services, but after discovering Morgan Freeware, I spend zero."
   },
   {
     name: "Marcus Jansson",
     role: "Average Monster Enjoyer",
-    image: "https://media.discordapp.net/attachments/275901933607452674/1350215112190988398/IMG_3268.jpg?ex=67d5ed50&is=67d49bd0&hm=ef87e16dd256825cfa15dc6088e462fb912913ddaef01be3086c3daa0c222fd5&=&format=webp&width=928&height=1237",
+    image: marcus.src,
     text: "I used to pirate all my software. Nowadays, I pirate and use free alternatives."
   }
 ];
