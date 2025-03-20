@@ -19,7 +19,7 @@ export default function Header() {
           </Link>
           
           <button 
-            className="md:hidden p-2 text-[var(--color-text-primary)]"
+            className="md:hidden p-2 text-[var(--color-text-primary)] cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
