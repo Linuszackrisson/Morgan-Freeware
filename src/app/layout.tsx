@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Raleway, Orbitron } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const fontbajs = Raleway({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin"] });
+const orbitron = Orbitron({ subsets: ["latin"], variable: '--font-orbitron' });
 
 export const metadata: Metadata = {
-  title: "Morgan Freeware",
+  title: "Morgan Freeman",
   description: "A list of free software alternatives",
 };
 
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontbajs.className}`}>
+      <body className={`${raleway.className} ${orbitron.variable}`}>
         <Header />
           {children}
         <Footer />  

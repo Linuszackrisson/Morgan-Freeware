@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,8 +11,11 @@ export default function Header() {
     <header className="bg-[var(--color-background)] shadow-sm sticky top-0 z-50 border-b border-[var(--color-border)]">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-[var(--color-text-primary)] font-bold text-xl">
-            Morgan FreeWare
+          <Link href="/" className="flex items-center gap-2 text-[var(--color-text-primary)]">
+            <Image src="/assets/icon.svg" alt="Morgan Freeman Logo" width={32} height={32} />
+            <span className="font-bold text-xl font-[var(--font-orbitron)]">
+              Morgan Freeman
+            </span>
           </Link>
           
           <button 
