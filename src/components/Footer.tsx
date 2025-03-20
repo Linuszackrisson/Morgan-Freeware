@@ -13,7 +13,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-[var(--color-text-secondary)] text-sm">
-            &copy; {new Date().getFullYear()} Morgan Freeman
+            &copy; {new Date().getFullYear()} Morgan Freeware
           </p>
         </div>
       </div>

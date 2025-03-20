@@ -14,7 +14,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2 text-[var(--color-text-primary)]">
             <Image src="/assets/icon.svg" alt="Morgan Freeman Logo" width={32} height={32} />
             <span className="font-bold text-xl font-[var(--font-orbitron)]">
-              Morgan Freeman
+              Morgan Freeware
             </span>
           </Link>
           
