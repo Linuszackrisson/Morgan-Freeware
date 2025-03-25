@@ -7,8 +7,7 @@ export interface Software {
   preview_url: string;
   website_url: string;
   created_at: string;
-  average_rating: number;
-  total_ratings: number;
+  
 } 
 
 

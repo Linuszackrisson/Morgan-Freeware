@@ -1,41 +1,24 @@
-import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import { rateSoftware } from '@/utils/software-service';
+import { RatingStarsProps } from '@/types/ratings';
 
-interface RatingStarsProps {
-  softwareId: string;
-  rating?: number;
-  onRatingSubmitted?: (newRating: number) => void;
-}
+export function RatingStars({ softwareId, rating = 0, onRatingSubmitted }: RatingStarsProps) { 
+  // När vi klickar på en stjärna så sparar vi betyget i databasen och skickar vidare det nya betyget till "föräldrakomponenten"
 
-export function RatingStars({ softwareId, rating = 0, onRatingSubmitted }: RatingStarsProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  /* 
+Jag medveten om att det är endast ett betyg per program, det är ingen total, inget genomsnitt, downvotar du, så gör du det..
+För att få det annorlunda så hade förmodligen behövt användare för att få dom unika, eller typ spara i localstorage om någon röstat, så det inte blir spam.
+Men för enkelhetens skull så blev det så här. Det går åtminstone att rösta ;) 
 
-  const handleRating = async (value: number) => {
+  */ 
+  const handleRating = async (value: number) => {  
     try {
-      setIsSubmitting(true);
-      const response = await fetch('/api/software/rate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          softwareId,
-          rating: value,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Kunde inte spara betyget');
-      }
-
-      if (onRatingSubmitted) {
-        onRatingSubmitted(value);
-      }
+      // Sparar betyget i databasen
+      await rateSoftware(softwareId, value);
+      // skickar vidare det nya betyget till "föräldrakomponenten"
+      onRatingSubmitted?.(value);
     } catch (error) {
-      console.error('Fel vid betygsättning:', error);
-      alert('Kunde inte spara betyget. Försök igen.');
-    } finally {
-      setIsSubmitting(false);
+      console.error('Failed to save rating:', error);
     }
   };
 
@@ -44,9 +27,9 @@ export function RatingStars({ softwareId, rating = 0, onRatingSubmitted }: Ratin
       {[1, 2, 3, 4, 5].map((star) => (
         <button
           key={star}
-          disabled={isSubmitting}
           onClick={() => handleRating(star)}
-          className="text-2xl focus:outline-none disabled:opacity-50"
+          className="text-2xl focus:outline-none hover:scale-110 transition-transform"
+          aria-label={`Rate ${star} out of 5 stars`}
         >
           <FaStar
             className={`transition-colors ${
