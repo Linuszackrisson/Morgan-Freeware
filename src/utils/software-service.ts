@@ -3,8 +3,8 @@ import { supabase } from '@/utils/supabase'; // Importerar supabase-klienten, in
 // Hämtar ALLA programmen, används i software page där vi visar alla program.
 export async function getAllSoftware(category?: string) {
   const query = supabase
-    .from('software')
-    .select('*')
+    .from('software') // vi väler/hämtar vår tabell från supabase
+    .select('*') // vi fäljer 
     .order('created_at', { ascending: false });
 
   if (category && category !== 'all') {
@@ -17,12 +17,12 @@ export async function getAllSoftware(category?: string) {
 }
 
 // Hämtar ett program med ett specifikt id
-export async function getSoftwareById(id: string) {
+export async function getSoftwareById(id: string) { // vi skickar med vår id från vår software page
   const { data, error } = await supabase
-    .from('software')
-    .select('*')
-    .eq('id', id)
-    .single();
+    .from('software') // vi väljer/hämtar vår tabell från supabase
+    .select('*') // vi väljer allt från vår tabell, dvs alla kolumner
+    .eq('id', id) // vi matchar raden där id är lika med det vi skickar med. eq = equal. Var tydligen standard.
+    .single(); // vi vill ha en enda rad så vi kan jämföra med vår input
 
   if (error) throw error;
   return data;
@@ -30,18 +30,18 @@ export async function getSoftwareById(id: string) {
 // hämtar program per kategori 
 export async function getCategories() {
   const { data, error } = await supabase
-    .from('software')
-    .select('category');
+    .from('software') // vi väljer/hämtar vår tabell från supabase
+    .select('category'); // vi väljer kolumnen category
 
   if (error) throw error;
-  return [...new Set(data.map(item => item.category))];
+  return [...new Set(data.map(item => item.category))]; // vi returnerar en array med kategorier
 }
 
 export async function rateSoftware(softwareId: string, rating: number) {
   const { error } = await supabase
-    .from('software')
-    .update({ rating })
-    .eq('id', softwareId);
+    .from('software') // vi väljer/hämtar vår tabell från supabase
+    .update({ rating }) // vi uppdaterar vår rating
+    .eq('id', softwareId); // vi matchar raden där id är lika med det vi skickar.
 
   if (error) throw error;
 

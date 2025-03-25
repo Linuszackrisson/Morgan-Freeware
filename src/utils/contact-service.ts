@@ -2,11 +2,11 @@ import { supabase } from '@/utils/supabase';
 import { ContactFormData } from '@/types/contact';
 
 export const contactService = {
-  async submitContactForm(data: ContactFormData) {
+  async submitContactForm(data: ContactFormData) { // vi skickar in vår input från contact formen
     try {
       const { error } = await supabase
-        .from('contact')
-        .insert([data]);
+        .from('contact') // väljer / hämtar vår tabell. 
+        .insert([data]); // skickar in vår input från contact formen
 
       if (error) {
         throw new Error(error.message);
