@@ -2,6 +2,12 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 
+/* 
+Denna komponenten är likt newsletter en av få komponenter som måste köras i client.
+Det är för att vi har useState som måste köras i client. eftersom vi uppdaterar formuläret.
+innan vi skickar tillbaka till servern.
+*/
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [message, setMessage] = useState('');

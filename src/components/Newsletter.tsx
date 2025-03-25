@@ -1,8 +1,8 @@
 'use client';
 /* 
 Här är en av få kompoenter som vi måste köra i client. 
-Det är för att vi har useState som måste köras i client. eftersom vi uppdaterar formuläret.
-innan vi skickar tillbaka till servern.
+Det är för att vi har useState som måste köras i client. eftersom vi uppdaterar fältet innan vi skickar tillbaka till servern.
+
 
 Hade det vi te.x bara haft en knapp som direkt skickar färdig data till servern så hade det fungerat i server komponent.
 */
