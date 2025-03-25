@@ -27,7 +27,7 @@ export default function Testimonials() {
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => ( 
             <div 
               key={index}
               className="bg-[var(--color-background)] border border-solid border-[var(--color-border)] rounded-2xl p-6"
